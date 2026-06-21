@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nikhil AI Labs — AI Copilots for Operational Excellence &amp; Quality</title>
+<meta name="description" content="Practical AI systems for deviation investigations, root cause analysis, CAPA, A3 problem-solving, and manufacturing performance. Human judgment stays central." />
+<link rel="icon" href="assets/logo.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav-shell">
+  <div class="wrap">
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="#top" class="brand" aria-label="Nikhil AI Labs home">
+        <span class="brand__mark" aria-hidden="true">N</span>
+        <span class="brand__word">Nikhil <span class="ai">AI</span> Labs</span>
+      </a>
+      <div class="nav__links">
+        <a href="#top">Home</a>
+        <a href="#products">Products</a>
+        <a href="#use-cases">Use Cases</a>
+        <a href="#insights">Insights</a>
+        <a href="#about">About</a>
+      </div>
+      <div class="nav__right">
+        <a href="#pilot" class="btn btn--primary btn--nav">Pilot Request</a>
+        <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__grid">
+      <div class="hero__copy reveal">
+        <span class="eyebrow"><span class="dot"></span>Built for regulated operations</span>
+        <h1>AI Copilots for <span class="hl">Operational Excellence</span> and Quality</h1>
+        <p class="hero__sub">Practical AI systems for deviation investigations, root cause analysis, CAPA, A3 problem-solving, and manufacturing performance.</p>
+        <p class="hero__assure">
+          <svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+          Human judgment remains central — AI supports structure, evidence review, and decision quality.
+        </p>
+        <div class="hero__cta">
+          <a href="#pilot" class="btn btn--primary btn--lg">Request pilot
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#products" class="btn btn--ghost btn--lg">View products</a>
+        </div>
+        <div class="hero__stats">
+          <div class="stat"><b>15+</b><span>Years in OpEx</span></div>
+          <div class="stat"><b>4+</b><span>Regulated industries</span></div>
+          <div class="stat"><b>MBB</b><span>Lean Six Sigma</span></div>
+        </div>
+      </div>
+
+      <!-- Product preview card -->
+      <div class="hero__visual reveal">
+        <div class="preview" role="img" aria-label="Investigation Intelligence Workbench preview: deviation DEV-2026-0417 with a readiness score of 82 and an investigation quality score of 76.">
+          <div class="preview__top">
+            <div class="pv-case">DEV-2026-0417
+              <small>Tablet hardness — OOS</small>
+            </div>
+            <span class="pv-live"><i></i>Analyzing</span>
+          </div>
+
+          <div class="meter">
+            <div class="meter__row"><span>Readiness score</span><em>82 / 100</em></div>
+            <div class="bar"><i class="fill-orange" style="width:82%"></i></div>
+          </div>
+          <div class="meter">
+            <div class="meter__row"><span>Investigation quality</span><em>76 / 100</em></div>
+            <div class="bar"><i class="fill-teal" style="width:76%"></i></div>
+          </div>
+
+          <div class="chips">
+            <span class="chip warn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 4.3 2 19a1.5 1.5 0 0 0 1.3 2.2h17.4A1.5 1.5 0 0 0 22 19L13.7 4.3a2 2 0 0 0-3.4 0Z"/></svg>
+              3 evidence gaps
+            </span>
+            <span class="chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12a3 3 0 0 0 3 3h6M6 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
+              5-Why ready
+            </span>
+            <span class="chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>
+              CAPA: 4 options
+            </span>
+          </div>
+
+          <div class="pv-timeline" aria-hidden="true">
+            <span class="pv-node on"></span><span class="pv-line"></span>
+            <span class="pv-node on"></span><span class="pv-line"></span>
+            <span class="pv-node on"></span><span class="pv-line dim"></span>
+            <span class="pv-node"></span><span class="pv-line dim"></span>
+            <span class="pv-node"></span>
+          </div>
+
+          <a href="#pilot" class="btn btn--primary" style="width:100%">Generate CAPA options
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track" id="marquee">
+    <!-- content duplicated by JS for seamless loop -->
+    <span>GMP</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+    <span>CAPA</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+    <span>ROOT CAUSE ANALYSIS</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+    <span>DEVIATIONS</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+    <span>5-WHY · FISHBONE</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+    <span>LEAN SIX SIGMA</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+    <span>CDMO</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+    <span>OPERATIONAL EXCELLENCE</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+  </div>
+</div>
+
+<!-- ============ PRODUCTS ============ -->
+<section id="products">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Our products</span>
+      <h2>We build AI copilots for problem solving and operational excellence.</h2>
+      <p>Three copilots, one mission — helping organizations solve problems better through AI-assisted operational excellence.</p>
+    </div>
+
+    <div class="products-grid reveal">
+
+      <!-- Product 01 — Investigation Intelligence Workbench -->
+      <article class="product-card pc--orange card-link">
+        <span class="pc__num">01</span>
+        <div class="pc__head">
+          <div class="ico t-orange"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="m21 21-4.6-4.6M8 11v1.5M10.5 9v4M13 10.5v2.5"/></svg></div>
+          <div>
+            <span class="pc__tag">Investigation Intelligence</span>
+            <h3><a class="pc__title-link" href="products/investigation-intelligence-workbench.html">Investigation Intelligence Workbench</a></h3>
+          </div>
+        </div>
+        <p class="pc__desc">Transform deviation investigations from documentation exercises into evidence-driven decision making.</p>
+        <div>
+          <p class="pc__sub">Capabilities</p>
+          <ul class="cap-list">
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Timeline reconstruction</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Investigation gap analysis</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Root cause workbench</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>CAPA recommendations</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>FDA / GMP risk checker</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Investigation readiness score</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Investigation quality score</li>
+          </ul>
+        </div>
+        <div>
+          <p class="pc__sub">Ideal for</p>
+          <div class="tag-pills">
+            <span>Pharmaceutical manufacturing</span>
+            <span>Medical device companies</span>
+            <span>CDMOs</span>
+            <span>Quality organizations</span>
+          </div>
+        </div>
+        <div class="pc__cta">
+          <a href="products/investigation-intelligence-workbench.html" class="btn btn--primary">Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Product 02 — A3 Coach -->
+      <article class="product-card pc--teal card-link">
+        <span class="pc__num">02</span>
+        <div class="pc__head">
+          <div class="ico t-teal"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 2a7 7 0 0 0-4 12.6c.6.5 1 1.3 1 2.1v.3h6v-.3c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg></div>
+          <div>
+            <span class="pc__tag">Continuous Improvement Coach</span>
+            <h3><a class="pc__title-link" href="products/a3-coach.html">A3 Coach</a></h3>
+          </div>
+        </div>
+
+        <p class="pc__desc">An AI-powered continuous improvement coach that helps teams structure problem solving, strengthen critical thinking, and develop better A3s.</p>
+        <div>
+          <p class="pc__sub">Capabilities</p>
+          <ul class="cap-list">
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Guided A3 creation</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Problem statement coaching</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Root cause analysis support</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Countermeasure development</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Lean Six Sigma guidance</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Leadership review readiness</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Continuous improvement learning</li>
+          </ul>
+        </div>
+        <div>
+          <p class="pc__sub">Ideal for</p>
+          <div class="tag-pills">
+            <span>Operational Excellence teams</span>
+            <span>Lean practitioners</span>
+            <span>Manufacturing leaders</span>
+            <span>Continuous Improvement programs</span>
+            <span>Students &amp; aspiring Lean professionals</span>
+          </div>
+        </div>
+        <div class="pc__cta">
+          <a href="products/a3-coach.html" class="btn btn--navy">Try A3 Coach
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Product 03 — Kaizen Event Copilot -->
+      <article class="product-card pc--navy card-link">
+        <span class="pc__num">03</span>
+        <div class="pc__head">
+          <div class="ico t-navy"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></svg></div>
+          <div>
+            <span class="pc__tag">Kaizen Event Facilitator</span>
+            <h3><a class="pc__title-link" href="products/kaizen-event-copilot.html">Kaizen Event Copilot</a></h3>
+          </div>
+        </div>
+
+        <p class="pc__desc">An AI improvement assistant that helps teams plan, run, document, and sustain high-impact Kaizen events — like a senior Lean Six Sigma facilitator at your side.</p>
+        <div>
+          <p class="pc__sub">Capabilities</p>
+          <ul class="cap-list">
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Kaizen readiness scoring</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Event charter &amp; agenda generation</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>8-waste &amp; root cause analysis</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Countermeasure &amp; impact/effort matrix</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Action &amp; control plans</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>30/60/90-day sustainment plan</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Export-ready Kaizen report</li>
+          </ul>
+        </div>
+        <div>
+          <p class="pc__sub">Ideal for</p>
+          <div class="tag-pills">
+            <span>Operational Excellence leaders</span>
+            <span>Continuous Improvement managers</span>
+            <span>Manufacturing excellence teams</span>
+            <span>Pharma / biotech / CDMO operations</span>
+            <span>Process &amp; lab operations engineers</span>
+          </div>
+        </div>
+        <div class="pc__cta">
+          <a href="products/kaizen-event-copilot.html" class="btn btn--primary">Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROOF ============ -->
+<div class="band-navy" id="about">
+  <section>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="dot"></span>Why Nikhil AI Labs</span>
+        <h2>Built from real operational excellence experience.</h2>
+        <p>Not a wrapper on a chatbot. Tools shaped by years on the floor, in the investigations, and inside the audits.</p>
+      </div>
+      <div class="proof-grid reveal">
+        <div class="proof-card">
+          <div class="big">15+</div>
+          <h3>Years of experience</h3>
+          <p>In manufacturing and operational excellence — hands-on, not theoretical.</p>
+        </div>
+        <div class="proof-card">
+          <div class="ico t-teal"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l5-3 5 3v13M9 11h2m-2 4h2m4-4h.01m-.01 4h.01"/></svg></div>
+          <h3>Regulated by default</h3>
+          <p>Pharma, CDMO, medtech, and regulated operations experience.</p>
+        </div>
+        <div class="proof-card">
+          <div class="ico t-orange"><svg viewBox="0 0 24 24"><path d="M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg></div>
+          <h3>Lean Six Sigma Master Black Belt</h3>
+          <p>Rigor in problem solving, variation, and process discipline.</p>
+        </div>
+        <div class="proof-card">
+          <div class="ico t-navy"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div>
+          <h3>Workflow-native</h3>
+          <p>Built around GMP, CAPA, RCA, and deviation workflows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ USE CASES ============ -->
+<section id="use-cases">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow"><span class="dot"></span>Who it's for</span>
+      <h2>Made for teams who investigate, improve, and decide.</h2>
+    </div>
+    <div class="uc-grid reveal">
+      <article class="uc-card">
+        <div class="ico t-orange"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div>
+        <div class="txt"><h3>Quality Assurance</h3><p>Defensible investigations and audit-ready documentation, faster.</p></div>
+      </article>
+      <article class="uc-card">
+        <div class="ico t-teal"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l5-3 5 3v13M9 11h2m-2 4h2m4-4h.01m-.01 4h.01"/></svg></div>
+        <div class="txt"><h3>Manufacturing Operations</h3><p>Resolve deviations on the floor without stalling the line.</p></div>
+      </article>
+      <article class="uc-card">
+        <div class="ico t-navy"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></div>
+        <div class="txt"><h3>External Manufacturing / CDMO</h3><p>Consistent investigation quality across every partner site.</p></div>
+      </article>
+      <article class="uc-card">
+        <div class="ico t-orange"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7M14 7h5v5"/></svg></div>
+        <div class="txt"><h3>Operational Excellence</h3><p>Turn one-off RCAs into repeatable, improving systems.</p></div>
+      </article>
+      <article class="uc-card">
+        <div class="ico t-teal"><svg viewBox="0 0 24 24"><path d="M17 20a5 5 0 0 0-10 0M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM21 20a4 4 0 0 0-3-3.8M18 4.2a4 4 0 0 1 0 7.6"/></svg></div>
+        <div class="txt"><h3>CAPA Boards</h3><p>Better options, clearer rationale, sharper decisions.</p></div>
+      </article>
+      <article class="uc-card">
+        <div class="ico t-navy"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <div class="txt"><h3>Site Leadership</h3><p>Visibility into quality risk before it becomes a finding.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHILOSOPHY ============ -->
+<div class="philo">
+  <section>
+    <div class="wrap">
+      <div class="philo__grid">
+        <div class="reveal">
+          <span class="eyebrow"><span class="dot"></span>Product philosophy</span>
+          <h2 style="margin:20px 0 24px">Optimize <span class="hl">before</span> you automate.</h2>
+          <p class="philo__copy">AI does not fix broken processes. Nikhil AI Labs designs tools that strengthen thinking, improve investigation discipline, and help teams make better decisions faster.</p>
+        </div>
+        <div class="reveal">
+          <div class="principle">
+            <div class="flowline">
+              <div class="flowstep"><span class="num">1</span> Strengthen the thinking</div>
+              <div class="flowstep"><span class="num">2</span> Improve the discipline</div>
+              <div class="flowstep"><span class="num">3</span> Decide faster, with evidence</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ INSIGHTS ============ -->
+<section id="insights">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Insights</span>
+      <h2>Latest thinking</h2>
+      <p>Field notes on investigations, scoring, and the real role of AI in regulated operations.</p>
+    </div>
+    <div class="posts reveal">
+      <article class="post card-link">
+        <div class="post__cover"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4m0 4h.01M10.3 4.3 2 19a1.5 1.5 0 0 0 1.3 2.2h17.4A1.5 1.5 0 0 0 22 19L13.7 4.3a2 2 0 0 0-3.4 0Z"/></svg></div>
+        <div class="post__body">
+          <span class="pill">RCA</span>
+          <h3><a class="pc__title-link" href="insights/why-ai-investigations-fail.html">Why AI investigations fail without process discipline</a></h3>
+          <div class="meta"><span>6 min read</span><a href="insights/why-ai-investigations-fail.html" class="read">Read
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="post card-link">
+        <div class="post__cover"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM12 14v6M4.9 10a8 8 0 1 1 14.2 0"/></svg></div>
+        <div class="post__body">
+          <span class="pill">Metrics</span>
+          <h3><a class="pc__title-link" href="insights/readiness-vs-quality-score.html">Readiness score vs quality score in deviation management</a></h3>
+          <div class="meta"><span>5 min read</span><a href="insights/readiness-vs-quality-score.html" class="read">Read
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="post card-link">
+        <div class="post__cover"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 7-7M14 7h5v5"/></svg></div>
+        <div class="post__body">
+          <span class="pill">Lean Six Sigma</span>
+          <h3><a class="pc__title-link" href="insights/future-of-lean-six-sigma.html">The future of Lean Six Sigma in the age of AI</a></h3>
+          <div class="meta"><span>7 min read</span><a href="insights/future-of-lean-six-sigma.html" class="read">Read
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PILOT CTA ============ -->
+<div class="band-orange" id="pilot">
+  <section>
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow"><span class="dot"></span>Pilot program</span>
+        <h2>Bring AI into your investigation workflow.</h2>
+        <p>Pilots can begin with anonymized or sample investigations — with a readiness and quality baseline in weeks, not quarters.</p>
+        <form class="pilot-form" id="pilotForm" novalidate>
+          <div class="pf-grid">
+            <div class="pf-field">
+              <label for="pf-name">Name</label>
+              <input id="pf-name" name="name" type="text" autocomplete="name" placeholder="Your name" required />
+            </div>
+            <div class="pf-field">
+              <label for="pf-email">Work email</label>
+              <input id="pf-email" name="email" type="email" autocomplete="email" placeholder="you@yourcompany.com" required />
+            </div>
+            <div class="pf-field">
+              <label for="pf-company">Company</label>
+              <input id="pf-company" name="company" type="text" autocomplete="organization" placeholder="Company name" required />
+            </div>
+            <div class="pf-field">
+              <label for="pf-role">Role / title</label>
+              <select id="pf-role" name="role">
+                <option value="" disabled selected>Select your role</option>
+                <option>QA Manager</option>
+                <option>Operational Excellence Lead</option>
+                <option>Manufacturing Manager</option>
+                <option>CDMO Leader</option>
+                <option>Consultant</option>
+                <option>Student</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="pf-field pf-full">
+              <label for="pf-product">Product interest</label>
+              <select id="pf-product" name="product">
+                <option value="" disabled selected>Which copilot?</option>
+                <option value="Investigation Intelligence Workbench">Investigation Intelligence Workbench</option>
+                <option value="A3 Coach">A3 Coach</option>
+                <option value="Kaizen Event Copilot">Kaizen Event Copilot</option>
+                <option value="Both">Both</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </div>
+            <div class="pf-field pf-full">
+              <label for="pf-message">Message <span class="pf-opt">(optional)</span></label>
+              <textarea id="pf-message" name="message" rows="3" placeholder="What would you like to pilot, and on what kind of investigation or problem?"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn--lg btn--navy" id="pilotSubmit">Request a pilot
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="pilot-status" id="pilotStatus" role="status" aria-live="polite"></p>
+          <div class="pilot-success" id="pilotSuccess" aria-hidden="true">
+            <div class="check"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+            <h3>Request received.</h3>
+            <p>Thanks — I&rsquo;ll review it and follow up by email with pilot details.</p>
+          </div>
+        </form>
+        <p class="pilot-note">Designed for a focused, low-friction pilot.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a href="#top" class="brand">
+          <span class="brand__mark" aria-hidden="true">N</span>
+          <span class="brand__word">Nikhil <span class="ai">AI</span> Labs</span>
+        </a>
+        <p>Nikhil AI Labs builds AI copilots that strengthen operational excellence, investigation quality, and continuous improvement.</p>
+        <div class="foot-social">
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.76-1.95C20.4 8.75 22 10.9 22 14.5V21h-4v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.2 1.48-2.2 3v5.8H9V9Z"/></svg>
+          </a>
+          <a href="#pilot" aria-label="Contact">
+            <svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm.5 2L12 13l8.5-6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Products</h4>
+        <a href="products/investigation-intelligence-workbench.html">Investigation Workbench</a>
+        <a href="products/a3-coach.html">A3 Coach</a>
+        <a href="products/kaizen-event-copilot.html">Kaizen Event Copilot</a>
+        <a href="#pilot">Pilot Request</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#use-cases">Use Cases</a>
+        <a href="#about">About</a>
+        <a href="#insights">Insights</a>
+      </div>
+      <div class="foot-col">
+        <h4>Connect</h4>
+        <a href="#">LinkedIn</a>
+        <a href="#pilot">Contact</a>
+        <a href="#pilot">Request a pilot</a>
+      </div>
+    </div>
+    <p class="foot-disclaimer"><strong>Important:</strong> Nikhil AI Labs tools are designed to support investigation workflows and decision-making. They do not replace quality approval, regulatory judgment, or authorized QMS processes.</p>
+    <div class="foot-bottom">
+      <span>© 2026 Nikhil AI Labs. AI for regulated operations.</span>
+      <span>Built around GMP · CAPA · RCA · Deviations</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

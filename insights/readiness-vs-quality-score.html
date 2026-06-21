@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Readiness Score vs Quality Score in Deviation Management — Nikhil AI Labs</title>
+<meta name="description" content="Completion tells you an investigation is ready. Quality tells you whether it should move forward. Why readiness score and quality score are different — and why the gap matters." />
+<link rel="icon" href="../assets/logo.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav-shell">
+  <div class="wrap">
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="../index.html" class="brand" aria-label="Nikhil AI Labs home">
+        <span class="brand__mark" aria-hidden="true">N</span>
+        <span class="brand__word">Nikhil <span class="ai">AI</span> Labs</span>
+      </a>
+      <div class="nav__links">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#products">Products</a>
+        <a href="../index.html#use-cases">Use Cases</a>
+        <a href="../index.html#insights" class="is-active">Insights</a>
+        <a href="../index.html#about">About</a>
+      </div>
+      <div class="nav__right">
+        <a href="../index.html#pilot" class="btn btn--primary btn--nav">Pilot Request</a>
+        <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <article class="article">
+    <div class="wrap">
+      <div class="article__head reveal">
+        <p class="crumb"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg> <a href="../index.html#insights">Insights</a></p>
+        <h1>Readiness Score vs Quality Score in Deviation Management</h1>
+        <div class="article__meta">
+          <span class="pill">Metrics</span>
+          <span>By Nikhil Pal</span>
+          <span>·</span>
+          <span>5 min read</span>
+        </div>
+      </div>
+
+      <hr class="article__divider" />
+
+      <div class="prose reveal">
+        <p class="prose__lead">Most quality systems tell you whether an investigation is complete.</p>
+
+        <p>They do not always tell you whether it is good.</p>
+
+        <blockquote><p>And there is a big difference.</p></blockquote>
+
+        <p>I have seen investigations that were technically &ldquo;ready&rdquo; for closure.</p>
+        <p>All fields completed.</p>
+        <p>All attachments uploaded.</p>
+        <p>All signatures collected.</p>
+
+        <p>But when you step back, the investigation still leaves uncomfortable questions:</p>
+
+        <ul>
+          <li>Was the real root cause proven?</li>
+          <li>Were alternative causes ruled out?</li>
+          <li>Was the CAPA linked to the actual failure mode?</li>
+          <li>Would this pass a tough audit discussion?</li>
+        </ul>
+
+        <p>That is why I like separating two scores.</p>
+
+        <h3>Readiness Score</h3>
+        <p>This answers: <strong>Can the investigation move forward?</strong></p>
+        <p>It checks completion.</p>
+        <p>Evidence attached.</p>
+        <p>Timeline documented.</p>
+        <p>Approvals done.</p>
+        <p>CAPA assigned.</p>
+
+        <h3>Quality Score</h3>
+        <p>This answers: <strong>Should the investigation move forward?</strong></p>
+        <p>It checks thinking quality.</p>
+        <p>Evidence strength.</p>
+        <p>Root cause logic.</p>
+        <p>CAPA effectiveness.</p>
+        <p>Risk of recurrence.</p>
+
+        <p>For example, an investigation may have a readiness score of 90 because all required sections are complete.</p>
+        <p>But the quality score may be 55 because the root cause is based on assumption, not evidence.</p>
+
+        <blockquote><p>That gap is where leadership attention is needed.</p></blockquote>
+
+        <p>For me, this is where AI can add real value.</p>
+        <p>Not just by making reports faster.</p>
+        <p>But by helping teams see the difference between completion and quality.</p>
+
+        <p>Because in regulated operations, closure is not the goal.</p>
+
+        <p class="prose__closer"><span class="hl">Confidence</span> is the goal.</p>
+      </div>
+
+      <div class="article__back reveal">
+        <a href="../index.html#insights"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to Insights</a>
+      </div>
+    </div>
+  </article>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a href="../index.html" class="brand">
+          <span class="brand__mark" aria-hidden="true">N</span>
+          <span class="brand__word">Nikhil <span class="ai">AI</span> Labs</span>
+        </a>
+        <p>Nikhil AI Labs builds AI copilots that strengthen operational excellence, investigation quality, and continuous improvement.</p>
+        <div class="foot-social">
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.76-1.95C20.4 8.75 22 10.9 22 14.5V21h-4v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.2 1.48-2.2 3v5.8H9V9Z"/></svg>
+          </a>
+          <a href="../index.html#pilot" aria-label="Contact">
+            <svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm.5 2L12 13l8.5-6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Products</h4>
+        <a href="../products/investigation-intelligence-workbench.html">Investigation Workbench</a>
+        <a href="../products/a3-coach.html">A3 Coach</a>
+        <a href="../index.html#pilot">Pilot Request</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="../index.html#use-cases">Use Cases</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#insights">Insights</a>
+      </div>
+      <div class="foot-col">
+        <h4>Connect</h4>
+        <a href="#">LinkedIn</a>
+        <a href="../index.html#pilot">Contact</a>
+        <a href="../index.html#pilot">Request a pilot</a>
+      </div>
+    </div>
+    <p class="foot-disclaimer"><strong>Important:</strong> Nikhil AI Labs tools are designed to support investigation workflows and decision-making. They do not replace quality approval, regulatory judgment, or authorized QMS processes.</p>
+    <div class="foot-bottom">
+      <span>© 2026 Nikhil AI Labs. AI for regulated operations.</span>
+      <span>Built around GMP · CAPA · RCA · Deviations</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>
