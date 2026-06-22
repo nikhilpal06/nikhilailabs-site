@@ -634,6 +634,24 @@ footer .brand__word { color: var(--white); }
 .tile .tile-link svg { width: 16px; height: 16px; }
 .tile .tag { margin-bottom: -4px; }
 
+/* About page: portrait + certifications */
+.about-portrait { margin: 6px auto 20px; width: 172px; height: 172px; }
+.about-portrait img {
+  width: 172px; height: 172px; object-fit: cover; object-position: 50% 12%;
+  border-radius: 50%; border: var(--bw) solid var(--navy); box-shadow: 6px 6px 0 var(--navy); background: var(--white);
+}
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+.cert {
+  background: var(--white); border: var(--bw) solid var(--navy); border-radius: var(--radius);
+  box-shadow: var(--sh-sm); padding: 22px 22px 24px;
+  transition: transform .14s var(--ease), box-shadow .14s var(--ease);
+}
+.cert:hover { transform: translate(-3px,-3px); box-shadow: var(--sh); }
+.cert__issuer { display: inline-block; font-size: 11.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 9px; }
+.cert h3 { font-size: 17px; line-height: 1.25; }
+.cert--award { background: var(--tint-orange); }
+.cert--award .cert__issuer { color: var(--orange-deep); }
+
 /* ---------- Reveal animation ---------- */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
 .reveal.in { opacity: 1; transform: none; }
