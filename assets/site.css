@@ -584,6 +584,56 @@ footer .brand__word { color: var(--white); }
 .article__back a:hover { color: var(--orange-deep); }
 .article__back svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
+/* ============================================================
+   SOLUTIONS BY INDUSTRY (home) + FAQ accordion + solution tiles
+   ============================================================ */
+.ind-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.ind-card {
+  position: relative; display: flex; flex-direction: column; gap: 13px;
+  background: var(--white); border: var(--bw) solid var(--navy); border-radius: var(--radius);
+  box-shadow: var(--sh); padding: 28px; color: inherit;
+  transition: transform .14s var(--ease), box-shadow .14s var(--ease);
+}
+.ind-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 8px; border-radius: 15px 15px 0 0; border-bottom: var(--bw) solid var(--navy); }
+.ind--orange::before { background: var(--orange); }
+.ind--teal::before { background: var(--teal); }
+.ind--navy::before { background: var(--navy); }
+.ind-card:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--navy); }
+.ind-card:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.ind-card .ico { margin-bottom: 2px; }
+.ind-card h3 { font-size: 21px; margin-top: 2px; }
+.ind-card p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--body); }
+.ind-go { margin-top: auto; display: inline-flex; align-items: center; gap: 9px; font-weight: 800; font-size: 14.5px; color: var(--orange-deep); padding-top: 8px; }
+.ind-go svg { width: 17px; height: 17px; }
+
+/* FAQ accordion (native <details> — keyboard accessible, no JS) */
+.faq-list { max-width: 820px; margin: 0 auto; display: grid; gap: 16px; }
+.faq-item {
+  background: var(--white); border: var(--bw) solid var(--navy); border-radius: var(--radius);
+  box-shadow: var(--sh-sm); overflow: hidden; transition: box-shadow .14s var(--ease);
+}
+.faq-item[open] { box-shadow: var(--sh); }
+.faq-q {
+  cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  padding: 22px 24px; font-weight: 800; font-size: 17.5px; color: var(--navy); line-height: 1.3;
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q:focus-visible { outline: 3px solid var(--teal); outline-offset: -3px; border-radius: var(--radius); }
+.faq-icon {
+  flex: none; width: 34px; height: 34px; display: grid; place-items: center;
+  background: var(--tint-orange); border: 2px solid var(--navy); border-radius: 9px; box-shadow: 2px 2px 0 var(--navy);
+  transition: transform .2s var(--ease), background-color .2s;
+}
+.faq-icon svg { width: 17px; height: 17px; stroke: var(--navy); stroke-width: 3.2; fill: none; stroke-linecap: round; }
+.faq-item[open] .faq-icon { transform: rotate(45deg); background: var(--tint-teal); }
+.faq-a { padding: 0 24px 24px; }
+.faq-a p { margin: 0; font-size: 16px; line-height: 1.65; color: var(--body); max-width: 68ch; }
+
+/* Solution pages: product-mapping tile link */
+.tile .tile-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 14px; color: var(--orange-deep); margin-top: auto; }
+.tile .tile-link svg { width: 16px; height: 16px; }
+.tile .tag { margin-bottom: -4px; }
+
 /* ---------- Reveal animation ---------- */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
 .reveal.in { opacity: 1; transform: none; }
