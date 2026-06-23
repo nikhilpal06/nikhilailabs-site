@@ -670,7 +670,7 @@ footer .brand__word { color: var(--white); }
   .foot-about { grid-column: span 2; }
 }
 @media (max-width: 860px) {
-  .nav__links, .nav__login { display: none; }
+  .nav__links { display: none; }
   .nav__toggle { display: flex; }
   .nav.open .nav__links {
     display: flex; flex-direction: column; align-items: stretch;
@@ -692,6 +692,7 @@ footer .brand__word { color: var(--white); }
   .foot-about { grid-column: span 1; }
   .hero__cta .btn, .cta-row .btn { flex: 1; }
   .nav { padding: 10px 12px; }
+  .nav__login { display: none; }
   .brand__word { font-size: 17px; }
   .phero { padding: 40px 0 48px; }
   .exp { padding: 26px; gap: 18px; }
