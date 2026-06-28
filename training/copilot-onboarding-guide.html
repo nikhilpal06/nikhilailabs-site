@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nikhil AI Labs — Copilot Onboarding & Training Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --navy:#1B2D5A; --navy2:#0E1A38; --teal:#17A2B8; --orange:#FF6B35;
+  --paper:#FBF6EC; --white:#fff; --ink:#1B2D5A; --muted:#5b6b8c; --line:#e6e8ef;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:"Montserrat",system-ui,sans-serif;background:#0c1430;color:var(--ink);overflow:hidden}
+.deck{position:relative;height:100vh;width:100vw}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;
+  padding:6vh 8vw;background:var(--paper);
+  background-image:radial-gradient(rgba(27,45,90,.05) .8px,transparent .8px);background-size:26px 26px}
+.slide.active{display:flex;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+h1{font-size:clamp(30px,5vw,60px);font-weight:900;line-height:1.04;letter-spacing:-.01em;color:var(--navy)}
+h2{font-size:clamp(24px,3.6vw,42px);font-weight:900;line-height:1.08;color:var(--navy);margin-bottom:6px}
+.lead{font-size:clamp(15px,1.6vw,20px);color:var(--muted);font-weight:500;max-width:62ch;line-height:1.55;margin-top:10px}
+.hl{color:var(--orange)} .tealtxt{color:var(--teal)}
+
+ol.steps{list-style:none;margin-top:22px;display:grid;gap:12px;max-width:80ch}
+ol.steps li{display:flex;gap:14px;align-items:flex-start;font-size:clamp(14px,1.45vw,18px);line-height:1.45;color:#26334d}
+ol.steps li b{color:var(--navy)}
+.num{flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:var(--navy);color:#fff;
+  font-weight:800;font-size:14px;display:grid;place-items:center;margin-top:1px}
+ol.steps.teal .num{background:var(--teal)} ol.steps.orange .num{background:var(--orange)}
+
+.grid{display:grid;gap:16px;margin-top:24px}
+.grid.c2{grid-template-columns:1fr 1fr}.grid.c3{grid-template-columns:repeat(3,1fr)}
+.card{background:#fff;border:2px solid var(--navy);border-radius:16px;box-shadow:5px 5px 0 var(--navy);padding:18px 20px}
+.card h3{font-size:17px;font-weight:900;color:var(--navy);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.card p{font-size:13.5px;color:var(--muted);line-height:1.5}
+.tag{display:inline-block;font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;background:rgba(23,162,184,.12);color:var(--teal-deep,#0F7C8C);margin-bottom:6px}
+
+.callout{margin-top:22px;border-radius:14px;padding:14px 18px;font-size:14.5px;line-height:1.5;max-width:80ch}
+.callout b{font-weight:800}
+.callout.tip{background:rgba(23,162,184,.08);border:1.5px solid rgba(23,162,184,.4);color:#0e4a55}
+.callout.guard{background:rgba(255,107,53,.08);border:1.5px solid rgba(255,107,53,.4);color:#7c2d12}
+
+.slide--cover{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;justify-content:center}
+.slide--cover h1{color:#fff;font-size:clamp(34px,6vw,72px)}
+.slide--cover .lead{color:rgba(255,255,255,.8)}
+.slide--cover .kicker{color:var(--teal)}
+.brandmark{display:inline-flex;align-items:center;gap:10px;margin-bottom:26px}
+.brandmark .n{width:44px;height:44px;border-radius:12px;background:var(--orange);color:#fff;font-weight:900;font-size:22px;display:grid;place-items:center}
+.brandmark .w{font-size:20px;font-weight:900;color:#fff}.brandmark .w .ai{color:var(--orange)}
+
+.slide--section{background:var(--navy);color:#fff;justify-content:center}
+.slide--section h1{color:#fff}.slide--section .lead{color:rgba(255,255,255,.82)}
+.slide--section .kicker{color:var(--teal)}
+.big-step{font-size:clamp(54px,9vw,120px);font-weight:900;color:var(--orange);line-height:1}
+
+.foot{position:absolute;left:8vw;right:8vw;bottom:3vh;display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;font-weight:700;color:var(--muted)}
+.slide--cover .foot,.slide--section .foot{color:rgba(255,255,255,.55)}
+.foot .b{color:var(--navy)}.slide--cover .foot .b,.slide--section .foot .b{color:#fff}
+
+.progress{position:fixed;top:0;left:0;height:4px;background:var(--orange);z-index:50;transition:width .25s ease}
+.nav{position:fixed;bottom:18px;right:22px;z-index:50;display:flex;gap:8px;align-items:center}
+.nav button{cursor:pointer;border:none;width:38px;height:38px;border-radius:10px;background:var(--navy);color:#fff;
+  font-size:18px;display:grid;place-items:center;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.nav button:hover{background:var(--teal)} .nav .count{color:#fff;font-weight:800;font-size:13px;background:rgba(0,0,0,.45);
+  padding:7px 11px;border-radius:8px}
+.hint{position:fixed;bottom:22px;left:22px;z-index:50;font-size:11.5px;font-weight:700;color:rgba(255,255,255,.5)}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:start}
+
+@media print{
+  body{overflow:visible;background:#fff}
+  .deck{height:auto}
+  .slide{display:flex!important;position:relative;inset:auto;height:100vh;page-break-after:always;border-bottom:1px solid #eee}
+  .nav,.progress,.hint{display:none!important}
+}
+@media(max-width:760px){.grid.c2,.grid.c3,.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="deck" id="deck">
+
+<!-- 1 COVER -->
+<section class="slide slide--cover active">
+  <div class="brandmark"><span class="n">N</span><span class="w">Nikhil <span class="ai">AI</span> Labs</span></div>
+  <div class="kicker"><span class="dot"></span>New User Onboarding &amp; Training</div>
+  <h1>Your AI Copilots for<br>Operational Excellence</h1>
+  <p class="lead">A step-by-step guide to every copilot — what each one does, when to use it, and exactly how to run it. Built to strengthen practitioner thinking, not replace your judgment.</p>
+  <div class="foot"><span class="b">Onboarding Guide</span><span>Use ← → or Space · Press F for full screen</span></div>
+</section>
+
+<!-- 2 AGENDA -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>What you'll learn</div>
+  <h2>In this guide</h2>
+  <div class="grid c3">
+    <div class="card"><h3>1 · Getting started</h3><p>Signing in, the app launcher, and how access works.</p></div>
+    <div class="card"><h3>2 · The 6 copilots</h3><p>What each one is for and when to reach for it.</p></div>
+    <div class="card"><h3>3 · Step by step</h3><p>A guided walkthrough of every tool, click by click.</p></div>
+    <div class="card"><h3>4 · Which tool when</h3><p>A simple decision guide for picking the right copilot.</p></div>
+    <div class="card"><h3>5 · Guardrails</h3><p>How the AI keeps you honest — and stays compliant.</p></div>
+    <div class="card"><h3>6 · Help &amp; FAQ</h3><p>Common questions and where to get support.</p></div>
+  </div>
+  <div class="foot"><span class="b">Agenda</span><span>Nikhil AI Labs</span></div>
+</section>
+
+<!-- 3 PHILOSOPHY -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>The big idea</div>
+  <h2>A copilot is a <span class="hl">system</span>, not a prompt</h2>
+  <div class="two">
+    <ol class="steps teal">
+      <li><span class="num">✓</span><span><b>Method is enforced.</b> Phase gates and guardrails won't let you skip steps or overclaim a root cause.</span></li>
+      <li><span class="num">✓</span><span><b>The numbers are correct.</b> Statistics are computed by a tested engine — not guessed by a chatbot.</span></li>
+      <li><span class="num">✓</span><span><b>It coaches you.</b> It tells you what's missing and what to do next — not just what you asked.</span></li>
+      <li><span class="num">✓</span><span><b>You stay in control.</b> AI is advisory; a qualified human makes every decision.</span></li>
+    </ol>
+    <div class="callout tip"><b>Remember:</b> the copilot does the structure, the math, and the discipline. You bring the judgment, the context, and the decision.</div>
+  </div>
+  <div class="foot"><span class="b">Philosophy</span><span>Human-in-the-loop by design</span></div>
+</section>
+
+<!-- 4 SECTION: GETTING STARTED -->
+<section class="slide slide--section">
+  <div class="kicker"><span class="dot"></span>Part 1</div>
+  <h1>Getting started</h1>
+  <p class="lead">Sign in once, then jump between every tool from one place.</p>
+  <div class="foot"><span class="b">Part 1 of 4</span><span>Nikhil AI Labs</span></div>
+</section>
+
+<!-- 5 SIGN IN -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>Access &amp; sign-in</div>
+  <h2>Logging in &amp; moving around</h2>
+  <ol class="steps">
+    <li><span class="num">1</span><span>Go to <b>app.nikhilailabs.com</b> and click <b>Log in</b> (single sign-on).</span></li>
+    <li><span class="num">2</span><span>Your <b>dashboard</b> shows the copilots you can use. <b>INCLUDED</b> = built into the platform; <b>ENTERPRISE</b> = your subscription.</span></li>
+    <li><span class="num">3</span><span>Click the <b>app launcher</b> (the ⋮⋮⋮ waffle, top-left) any time to switch between copilots.</span></li>
+    <li><span class="num">4</span><span>Click <b>Open →</b> on any card to launch that copilot.</span></li>
+  </ol>
+  <div class="callout tip"><b>No access to a tool?</b> Access is granted per email address by your administrator. Ask them to add you on the <b>Access</b> page — no software install needed.</div>
+  <div class="foot"><span class="b">Getting started</span><span>app.nikhilailabs.com</span></div>
+</section>
+
+<!-- 6 TOOLS AT A GLANCE -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>The toolkit</div>
+  <h2>Six tools, one mission</h2>
+  <div class="grid c3">
+    <div class="card"><span class="tag">Start here</span><h3>AI Problem Diagnostic</h3><p>Describe any problem in 60s → instant triage + the right copilot to use next. No login.</p></div>
+    <div class="card"><span class="tag">Quality</span><h3>Investigation Workbench</h3><p>Deviations, OOS, complaints → evidence-driven RCA, CAPA &amp; GMP-ready export.</p></div>
+    <div class="card"><span class="tag">Coaching</span><h3>A3 Coach</h3><p>Structured A3 problem-solving with an AI coach that challenges your thinking.</p></div>
+    <div class="card"><span class="tag">Events</span><h3>Kaizen Event Copilot</h3><p>Plan, run, document &amp; sustain high-impact Kaizen events.</p></div>
+    <div class="card"><span class="tag">Flow</span><h3>Flow Intelligence Copilot</h3><p>Value-stream &amp; process maps + AI bottleneck and waste analysis.</p></div>
+    <div class="card"><span class="tag">Projects</span><h3>DMAIC Intelligence Copilot</h3><p>Run a full Lean Six Sigma project with a built-in statistics engine.</p></div>
+  </div>
+  <div class="foot"><span class="b">Overview</span><span>Switch any time via the app launcher</span></div>
+</section>
+
+<!-- 7 UNIVERSAL HABITS -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>Good habits</div>
+  <h2>Five habits that apply everywhere</h2>
+  <ol class="steps orange">
+    <li><span class="num">1</span><span><b>Save often.</b> Cloud save keeps your work across devices; the live draft is autosaved locally.</span></li>
+    <li><span class="num">2</span><span><b>Treat AI as advisory.</b> Read it, sanity-check it, then decide. You own the conclusion.</span></li>
+    <li><span class="num">3</span><span><b>Trust the guardrails.</b> If a tool blocks an analysis or won't claim a root cause, that's it protecting you.</span></li>
+    <li><span class="num">4</span><span><b>Feed it evidence.</b> Upload your documents and data — better inputs, better output.</span></li>
+    <li><span class="num">5</span><span><b>Export the deliverable.</b> Every tool produces a branded report or deck for read-outs and the file.</span></li>
+  </ol>
+  <div class="foot"><span class="b">Good habits</span><span>Nikhil AI Labs</span></div>
+</section>
+
+<!-- 8 SECTION: WALKTHROUGHS -->
+<section class="slide slide--section">
+  <div class="kicker"><span class="dot"></span>Part 2</div>
+  <h1>Step-by-step walkthroughs</h1>
+  <p class="lead">Each copilot — what it's for, when to use it, and exactly how to run it.</p>
+  <div class="foot"><span class="b">Part 2 of 4</span><span>Six guided tours</span></div>
+</section>
+
+<!-- 9 DIAGNOSTIC intro -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>Tool 1 · Start here</div>
+  <h2>AI Problem Diagnostic</h2>
+  <p class="lead"><b>When to use it:</b> you have a problem but aren't sure where to start, or you want a fast read before committing time. It's a 60-second triage — open to anyone, no login.</p>
+  <div class="grid c3" style="margin-top:18px">
+    <div class="card"><h3>Classifies</h3><p>Names the problem type (RCA, DMAIC, Kaizen, VSM, AI…).</p></div>
+    <div class="card"><h3>Drafts</h3><p>Refined statement, 5-Why draft, readiness score, what's missing.</p></div>
+    <div class="card"><h3>Points</h3><p>Recommends the right copilot to continue in.</p></div>
+  </div>
+  <div class="foot"><span class="b">AI Problem Diagnostic</span><span>app.nikhilailabs.com/assessment</span></div>
+</section>
+
+<!-- 10 DIAGNOSTIC steps -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>Tool 1 · How to run it</div>
+  <h2>Diagnose a problem in 60 seconds</h2>
+  <ol class="steps teal">
+    <li><span class="num">1</span><span>From the homepage, click <b>Analyze my problem</b> (or go to <b>/assessment</b>).</span></li>
+    <li><span class="num">2</span><span><b>Describe the problem</b> in plain English, or click an <b>example chip</b> to auto-fill.</span></li>
+    <li><span class="num">3</span><span>Click <b>Analyze My Problem</b> → your instant result appears in seconds.</span></li>
+    <li><span class="num">4</span><span>Read the cards: <b>problem type, refined statement, likely cause areas, draft 5-Why, readiness score, missing info</b>.</span></li>
+    <li><span class="num">5</span><span>Explore the <b>Problem Intelligence Map</b> — the <span class="hl">orange node</span> is your recommended copilot.</span></li>
+    <li><span class="num">6</span><span>Click <b>✨ Deepen with AI</b> for a richer 5-Why and a human practitioner take.</span></li>
+    <li><span class="num">7</span><span>Click <b>Continue in [copilot]</b> to start the real work — or <b>Email me this assessment</b>.</span></li>
+  </ol>
+  <div class="callout guard"><b>It's a triage, not a verdict.</b> Use it to choose the right tool and see what evidence you still need — never as a final root cause.</div>
+  <div class="foot"><span class="b">AI Problem Diagnostic</span><span>No login required</span></div>
+</section>
+
+<!-- 11 INVESTIGATION intro -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>Tool 2 · Quality</div>
+  <h2>Investigation Intelligence Workbench</h2>
+  <p class="lead"><b>When to use it:</b> a GMP deviation, OOS/OOT, customer complaint, or NCR that needs a defensible, evidence-driven investigation — RCA, CAPA, and audit-ready output.</p>
+  <div class="callout tip"><b>The case file has 12 screens</b> in the left sidebar — you'll move down them in order, from intake to export.</div>
+  <div class="foot"><span class="b">Investigation Workbench</span><span>workbench.nikhilailabs.com</span></div>
+</section>
+
+<!-- 12 INVESTIGATION steps 1 -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>Tool 2 · Run the investigation</div>
+  <h2>From intake to analysis</h2>
+  <ol class="steps">
+    <li><span class="num">1</span><span><b>New investigation</b> → choose the type (deviation / OOS / complaint), add a title and basic context.</span></li>
+    <li><span class="num">2</span><span><b>Drag &amp; drop your documents</b> — reports, data extracts, SOPs, PDFs, even photos. They're read automatically.</span></li>
+    <li><span class="num">3</span><span>Click <b>Run</b>. The analysis works in the background (timeline, gaps, RCA, CAPA, GMP risk) — give it a moment.</span></li>
+    <li><span class="num">4</span><span>Review screen by screen: <b>Executive Summary → Readiness &amp; Quality scores → Event Timeline → Evidence Map</b>.</span></li>
+  </ol>
+  <div class="foot"><span class="b">Investigation Workbench</span><span>Screens 1–5</span></div>
+</section>
+
+<!-- 13 INVESTIGATION steps 2 -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>Tool 2 · Decide &amp; close</div>
+  <h2>From evidence to a defensible close</h2>
+  <ol class="steps orange">
+    <li><span class="num">5</span><span><b>Evidence Graph:</b> link evidence to candidate causes on the visual map. <b>Save</b> your edits.</span></li>
+    <li><span class="num">6</span><span><b>Do-Not-Close-Until:</b> the red, closure-blocking gaps. <b>Resolve these before sign-off.</b></span></li>
+    <li><span class="num">7</span><span><b>RCA Workbench:</b> build a 5-Why or Fishbone; edit nodes; the AI flags weak links. Save.</span></li>
+    <li><span class="num">8</span><span><b>GMP Defensibility · Similar Cases · CAPA Options:</b> review the readiness badge, prior cases, and ranked CAPAs.</span></li>
+    <li><span class="num">9</span><span><b>Export:</b> Word / JSON / CSV, a <b>QMS field map</b> (Veeva / MasterControl / generic), and a branded PDF.</span></li>
+  </ol>
+  <div class="callout guard"><b>Compliance:</b> the AI supports the investigation. QA approval, regulatory judgment, and your authorized QMS process remain mandatory.</div>
+  <div class="foot"><span class="b">Investigation Workbench</span><span>Screens 6–12</span></div>
+</section>
+
+<!-- 14 A3 intro -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>Tool 3 · Coaching</div>
+  <h2>A3 Coach</h2>
+  <p class="lead"><b>When to use it:</b> any structured problem you want to solve <em>and</em> learn from — building a rigorous A3 while an AI coach sharpens your thinking.</p>
+  <ol class="steps teal">
+    <li><span class="num">1</span><span>Start a <b>new A3</b>.</span></li>
+    <li><span class="num">2</span><span>Work the boxes in order: <b>Background → Current Condition → Goal → Root-Cause Analysis → Countermeasures → Plan → Follow-up</b>.</span></li>
+    <li><span class="num">3</span><span>Use the <b>logic map</b> (5-Why / Fishbone) to structure root cause; the coach challenges weak links.</span></li>
+    <li><span class="num">4</span><span><b>Respond to the coaching prompts</b> — it pressure-tests your logic, it doesn't just fill the form.</span></li>
+    <li><span class="num">5</span><span>Check <b>leadership-review readiness</b>, refine, then save / export your A3.</span></li>
+  </ol>
+  <div class="callout tip"><b>Pro tip:</b> let it challenge you. The value is better thinking and stronger problem solvers — not a faster form.</div>
+  <div class="foot"><span class="b">A3 Coach</span><span>a3.nikhilailabs.com</span></div>
+</section>
+
+<!-- 15 KAIZEN -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>Tool 4 · Events</div>
+  <h2>Kaizen Event Copilot</h2>
+  <p class="lead"><b>When to use it:</b> planning, running, documenting, and sustaining a rapid-improvement (Kaizen) event.</p>
+  <ol class="steps orange">
+    <li><span class="num">1</span><span><b>Readiness scoring</b> — answer the readiness questions; get a go / no-go score.</span></li>
+    <li><span class="num">2</span><span><b>Charter &amp; agenda</b> — generate the event charter, scope, and a day-by-day agenda.</span></li>
+    <li><span class="num">3</span><span><b>Analysis</b> — walk the 8 wastes and root cause on the target process.</span></li>
+    <li><span class="num">4</span><span><b>Countermeasures</b> — generate ideas and rank them on the <b>impact / effort matrix</b>.</span></li>
+    <li><span class="num">5</span><span><b>Action &amp; control plan</b> + a <b>30/60/90-day sustainment</b> plan → export the Kaizen report.</span></li>
+  </ol>
+  <div class="callout tip"><b>Pro tip:</b> do the readiness step honestly — a weak charter is the #1 reason events fail to stick.</div>
+  <div class="foot"><span class="b">Kaizen Event Copilot</span><span>kaizen.nikhilailabs.com</span></div>
+</section>
+
+<!-- 16 FLOW -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>Tool 5 · Flow</div>
+  <h2>Flow Intelligence Copilot</h2>
+  <p class="lead"><b>When to use it:</b> mapping a value stream or process and finding the bottlenecks, waste, and highest-impact improvements.</p>
+  <ol class="steps teal">
+    <li><span class="num">1</span><span><b>New map</b> → pick a type (value stream / process / metric flow / future state).</span></li>
+    <li><span class="num">2</span><span><b>Drag node types</b> onto the canvas (suppliers, processes, queues, inspections, rework, kaizen burst…) and connect them.</span></li>
+    <li><span class="num">3</span><span><b>Enter metrics</b> on each step: cycle time, wait, WIP, first-pass yield, defect rate, changeover, uptime.</span></li>
+    <li><span class="num">4</span><span>Click <b>Analyze</b> → AI finds bottlenecks, classifies the 8 wastes, and computes flow efficiency / rolled throughput yield.</span></li>
+    <li><span class="num">5</span><span>Review the <b>readiness / performance / confidence scores</b>, then the <b>30/60/90 roadmap</b> and future-state ideas.</span></li>
+    <li><span class="num">6</span><span><b>Import</b> an existing map (Miro, Lucid, CSV, PDF, screenshot) with AI extraction + a review step; <b>export</b> the branded PDF.</span></li>
+  </ol>
+  <div class="callout guard"><b>Garbage in, garbage out:</b> the analysis is only as good as the metrics — capture real cycle and wait times.</div>
+  <div class="foot"><span class="b">Flow Intelligence Copilot</span><span>In-platform module</span></div>
+</section>
+
+<!-- 17 DMAIC intro / tabs -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>Tool 6 · Projects</div>
+  <h2>DMAIC Intelligence Copilot</h2>
+  <p class="lead"><b>When to use it:</b> running a full, data-driven Lean Six Sigma improvement project end to end — with a real statistics engine and an AI Master Black Belt reviewing your thinking.</p>
+  <div class="callout tip"><b>The tabs, in order:</b> Setup · Define · Measure · Analyze · Improve · Control · Scorecards · Statistics · FMEA · Visual Canvas · AI Review · Export.</div>
+  <div class="foot"><span class="b">DMAIC Intelligence Copilot</span><span>app.nikhilailabs.com/dashboard/dmaic-intelligence</span></div>
+</section>
+
+<!-- 18 DMAIC steps core -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>Tool 6 · Run the project</div>
+  <h2>Setup → Define → … → Control</h2>
+  <ol class="steps">
+    <li><span class="num">1</span><span><b>Setup:</b> project title, problem &amp; goal statements, scope, team, baseline and target.</span></li>
+    <li><span class="num">2</span><span>Work the <b>D → M → A → I → C</b> tabs, filling the guided fields. Click <b>AI Review</b> any time for phase feedback — strengths, gaps, blockers, recommended tools, next actions.</span></li>
+    <li><span class="num">3</span><span><b>Scorecards:</b> check Readiness, Data Quality, Root-Cause Confidence &amp; Control Sustainability — and resolve any <b>"Do Not Proceed Until"</b> blockers before advancing.</span></li>
+    <li><span class="num">4</span><span><b>Upload</b> an existing charter or deck to import it; <b>💾 Save</b> / <b>☁ My projects</b> to keep work across devices.</span></li>
+  </ol>
+  <div class="foot"><span class="b">DMAIC Intelligence Copilot</span><span>The DMAIC flow</span></div>
+</section>
+
+<!-- 19 DMAIC statistics -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>Tool 6 · The statistics engine</div>
+  <h2>Run a real analysis</h2>
+  <ol class="steps orange">
+    <li><span class="num">1</span><span>Open the <b>Statistics</b> tab. Unsure which test? Use <b>"Which statistical tool should I use?"</b> (Test or Control-chart mode).</span></li>
+    <li><span class="num">2</span><span><b>Choose an analysis:</b> Pareto, Cp/Cpk, I-MR, X̄-R, p/np/c/u, run chart, t-test, ANOVA, chi-square, regression.</span></li>
+    <li><span class="num">3</span><span><b>Paste or upload</b> your data (CSV/Excel); enter spec limits where the analysis needs them.</span></li>
+    <li><span class="num">4</span><span>Click <b>Run analysis</b> → read the result, chart, and the plain-English <b>interpretation</b> (what it says / what it does NOT prove / next step).</span></li>
+    <li><span class="num">5</span><span><b>Save to project</b> (feeds the AI review &amp; exports); export <b>PNG / CSV</b> per analysis.</span></li>
+  </ol>
+  <div class="callout guard"><b>Built-in guardrail:</b> it refuses to run the wrong analysis on the wrong data (e.g. capability on category counts) and never declares a final root cause.</div>
+  <div class="foot"><span class="b">DMAIC Intelligence Copilot</span><span>Statistics tab</span></div>
+</section>
+
+<!-- 20 DMAIC FMEA/canvas/export -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>Tool 6 · Visuals &amp; deliverables</div>
+  <h2>FMEA, canvases &amp; export</h2>
+  <ol class="steps teal">
+    <li><span class="num">6</span><span><b>FMEA tab:</b> build the failure-mode table; <b>RPN auto-calculates</b> (Severity × Occurrence × Detection) with priority colours.</span></li>
+    <li><span class="num">7</span><span><b>Visual Canvas:</b> draw a SIPOC, the DMAIC roadmap, a root-cause evidence map, or an FMEA on a drag-and-drop canvas; click <b>Analyze</b>; Save.</span></li>
+    <li><span class="num">8</span><span><b>AI Review:</b> get a full project review and a methodology-fit check (DMAIC / A3 / Kaizen / Just-Do-It).</span></li>
+    <li><span class="num">9</span><span><b>Export:</b> a branded <b>PowerPoint deck</b> and <b>PDF report</b> — charts, scorecards, canvases and FMEA included — for the tollgate.</span></li>
+  </ol>
+  <div class="foot"><span class="b">DMAIC Intelligence Copilot</span><span>FMEA · Canvas · Export</span></div>
+</section>
+
+<!-- 21 SECTION: WHICH TOOL -->
+<section class="slide slide--section">
+  <div class="kicker"><span class="dot"></span>Part 3</div>
+  <h1>Which copilot, when?</h1>
+  <p class="lead">A simple way to pick the right tool for the problem in front of you.</p>
+  <div class="foot"><span class="b">Part 3 of 4</span><span>Decision guide</span></div>
+</section>
+
+<!-- 22 DECISION GUIDE -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>Decision guide</div>
+  <h2>Match the problem to the tool</h2>
+  <div class="grid c2">
+    <div class="card"><h3>🧭 Not sure where to start?</h3><p><b>AI Problem Diagnostic</b> — 60-second triage that points you to the right copilot.</p></div>
+    <div class="card"><h3>🧪 GMP deviation / OOS / complaint / CAPA</h3><p><b>Investigation Workbench</b> — defensible, evidence-driven RCA + QMS export.</p></div>
+    <div class="card"><h3>🎓 Coach a problem / build an A3</h3><p><b>A3 Coach</b> — structured problem solving with challenge.</p></div>
+    <div class="card"><h3>⚡ Run a rapid improvement event</h3><p><b>Kaizen Event Copilot</b> — charter → run → sustain.</p></div>
+    <div class="card"><h3>🔀 Map &amp; improve flow / value stream</h3><p><b>Flow Intelligence Copilot</b> — bottlenecks &amp; waste.</p></div>
+    <div class="card"><h3>📊 Full data-driven improvement project</h3><p><b>DMAIC Intelligence Copilot</b> — stats, gates &amp; control.</p></div>
+  </div>
+  <div class="foot"><span class="b">Which tool when</span><span>You can switch any time</span></div>
+</section>
+
+<!-- 23 SECTION: GUARDRAILS -->
+<section class="slide slide--section">
+  <div class="kicker"><span class="dot"></span>Part 4</div>
+  <h1>Guardrails, help &amp; FAQ</h1>
+  <p class="lead">How the AI keeps you honest, stays compliant, and where to get unstuck.</p>
+  <div class="foot"><span class="b">Part 4 of 4</span><span>Trust &amp; support</span></div>
+</section>
+
+<!-- 24 GUARDRAILS -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>Trust &amp; compliance</div>
+  <h2>How the copilots stay trustworthy</h2>
+  <ol class="steps">
+    <li><span class="num">✓</span><span><b>Human-in-the-loop by design.</b> The AI structures and suggests; you approve and decide.</span></li>
+    <li><span class="num">✓</span><span><b>No overclaiming.</b> It separates facts from assumptions and won't assert a final root cause or significance without evidence.</span></li>
+    <li><span class="num">✓</span><span><b>Right analysis only.</b> It blocks statistically invalid analyses instead of returning a confident-but-wrong answer.</span></li>
+    <li><span class="num">✓</span><span><b>Regulated-ready.</b> Audit-friendly outputs and disclaimers — <em>"do not use as final GMP documentation without QA review."</em></span></li>
+    <li><span class="num">✓</span><span><b>Your data stays in the platform.</b> The public Diagnostic stores no sensitive text unless you consent.</span></li>
+  </ol>
+  <div class="foot"><span class="b">Guardrails</span><span>Regulated by default</span></div>
+</section>
+
+<!-- 25 FAQ -->
+<section class="slide">
+  <div class="kicker"><span class="dot"></span>FAQ &amp; troubleshooting</div>
+  <h2>Common questions</h2>
+  <div class="grid c2">
+    <div class="card"><h3>I don't see a copilot</h3><p>Access is per email. Ask your admin to grant it on the Access page.</p></div>
+    <div class="card"><h3>The AI seems slow</h3><p>Deeper analyses run in the background — give it a moment to finish.</p></div>
+    <div class="card"><h3>My analysis was blocked</h3><p>That's a guardrail. Check your data type matches the analysis (e.g. continuous vs. counts).</p></div>
+    <div class="card"><h3>Did I lose my work?</h3><p>Use ☁ Save for the cloud copy; your live draft autosaves in the browser.</p></div>
+    <div class="card"><h3>Can I import existing work?</h3><p>Yes — upload a charter, deck, CSV or PDF; review the AI's extraction before it loads.</p></div>
+    <div class="card"><h3>Is it accurate?</h3><p>Statistics are computed by a tested engine; AI text is advisory — always verify before acting.</p></div>
+  </div>
+  <div class="foot"><span class="b">FAQ</span><span>Nikhil AI Labs</span></div>
+</section>
+
+<!-- 26 CLOSE -->
+<section class="slide slide--cover">
+  <div class="brandmark"><span class="n">N</span><span class="w">Nikhil <span class="ai">AI</span> Labs</span></div>
+  <div class="kicker"><span class="dot"></span>You're ready</div>
+  <h1>Start with the Diagnostic.<br>Let the copilot do the rest.</h1>
+  <p class="lead">Sign in at app.nikhilailabs.com · Try the 60-second Diagnostic at nikhilailabs.com · Need a hand or a deeper session? Contact your Nikhil AI Labs lead.</p>
+  <div class="foot"><span class="b">Thank you</span><span>Optimize before you automate.</span></div>
+</section>
+
+</div>
+
+<div class="nav">
+  <button id="prev" aria-label="Previous">‹</button>
+  <span class="count" id="count">1 / 1</span>
+  <button id="next" aria-label="Next">›</button>
+</div>
+<div class="hint" id="hint">← → navigate · F full screen · P print to PDF</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var i = 0, n = slides.length;
+  var count = document.getElementById('count'), prog = document.getElementById('progress');
+  function show(k){
+    i = Math.max(0, Math.min(n-1, k));
+    slides.forEach(function(s,j){ s.classList.toggle('active', j===i); });
+    count.textContent = (i+1)+' / '+n;
+    prog.style.width = ((i)/(n-1)*100)+'%';
+    if (location.hash !== '#'+(i+1)) history.replaceState(null,'','#'+(i+1));
+  }
+  function next(){ show(i+1); } function prev(){ show(i-1); }
+  document.getElementById('next').onclick = next;
+  document.getElementById('prev').onclick = prev;
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){ e.preventDefault(); next(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); prev(); }
+    else if(e.key==='Home'){ show(0); } else if(e.key==='End'){ show(n-1); }
+    else if(e.key==='f'||e.key==='F'){ if(!document.fullscreenElement){document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();}else{document.exitFullscreen&&document.exitFullscreen();} }
+    else if(e.key==='p'||e.key==='P'){ window.print(); }
+  });
+  document.getElementById('deck').addEventListener('click', function(e){
+    if(e.target.closest('.nav')||e.target.closest('a')) return;
+    var x = e.clientX / window.innerWidth;
+    if(x>0.62) next(); else if(x<0.2) prev();
+  });
+  var start = parseInt((location.hash||'').replace('#',''),10);
+  show(isNaN(start)?0:start-1);
+})();
+</script>
+</body>
+</html>
