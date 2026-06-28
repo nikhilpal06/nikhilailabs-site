@@ -708,3 +708,26 @@ footer .brand__word { color: var(--white); }
   .reveal { opacity: 1; transform: none; }
   .marquee__track { animation: none !important; }
 }
+
+/* ---------- AI Problem Diagnostic teaser ---------- */
+.diag-card {
+  max-width: 780px; margin: 30px auto 0; background: var(--white);
+  border: var(--bw) solid var(--navy); border-radius: var(--radius);
+  box-shadow: var(--sh); padding: 28px; text-align: center;
+}
+.diag-input {
+  text-align: left; background: var(--white); border: 2px solid #E6E8EF;
+  border-radius: 14px; padding: 15px 17px; color: #94A3B8;
+  font-size: 14.5px; line-height: 1.55; min-height: 86px;
+}
+.diag-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 16px 0 20px; }
+.diag-chips a {
+  font-size: 12.5px; font-weight: 700; color: var(--navy); background: var(--white);
+  border: 1.5px solid #D7DBE6; border-radius: 999px; padding: 7px 13px;
+  transition: border-color .15s var(--ease), background .15s var(--ease);
+}
+.diag-chips a:hover { border-color: var(--teal); background: var(--tint-teal); }
+.diag-go { display: inline-flex; align-items: center; gap: 9px; }
+.diag-go svg { width: 20px; height: 20px; }
+.diag-note { margin: 14px 0 0; font-size: 12.5px; color: #94A3B8; }
+@media (max-width: 600px) { .diag-card { padding: 22px; } }
