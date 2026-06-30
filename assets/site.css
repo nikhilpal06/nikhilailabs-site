@@ -146,8 +146,12 @@ header.nav-shell { position: sticky; top: 0; z-index: 50; padding: 16px 0; }
 .nav__links a:hover { background: var(--white); border-color: var(--navy); }
 .nav__links a.is-active { background: var(--white); border-color: var(--navy); }
 .nav__right { display: flex; align-items: center; gap: 12px; }
-.nav__login { font-weight: 700; font-size: 15px; color: var(--navy); padding: 9px 6px; }
-.nav__login:hover { color: var(--orange-deep); }
+.nav__login {
+  font-weight: 700; font-size: 15px; color: var(--navy); white-space: nowrap;
+  padding: 9px 15px; border-radius: 10px; border: 2px solid var(--navy); background: var(--white);
+  transition: background-color .15s, color .15s;
+}
+.nav__login:hover { background: var(--navy); color: var(--white); }
 .nav__toggle {
   display: none; width: 46px; height: 46px; flex: none;
   align-items: center; justify-content: center;
@@ -695,9 +699,11 @@ footer .brand__word { color: var(--white); }
   .foot-grid { grid-template-columns: 1fr; }
   .foot-about { grid-column: span 1; }
   .hero__cta .btn, .cta-row .btn { flex: 1; }
-  .nav { padding: 10px 12px; }
-  .nav__login { display: none; }
-  .brand__word { font-size: 17px; }
+  .nav { padding: 10px 12px; gap: 8px; }
+  .nav__right { gap: 7px; }
+  .nav__login { display: inline-flex; align-items: center; padding: 8px 11px; font-size: 14px; }
+  .btn--nav { padding: 9px 11px; white-space: nowrap; }
+  .brand__word { display: none; }
   .phero { padding: 40px 0 48px; }
   .exp { padding: 26px; gap: 18px; }
 }
