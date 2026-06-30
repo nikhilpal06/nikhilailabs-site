@@ -10,7 +10,7 @@
 
   const problemEl = $("fwProblem"), catEl = $("fwCategory"), errorEl = $("fwError");
   const interviewCard = $("fwInterviewCard"), resultCard = $("fwResultCard"),
-        leadCard = $("fwLeadCard"), inputCard = $("fwInputCard");
+        leadCard = $("fwLeadCard");
   const MAX_WHYS = 5;
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
@@ -142,22 +142,11 @@
       `<h3 class="fw-h3">Missing evidence</h3><ul class="fw-list">${(d.missingEvidence || []).map((m) => `<li>${esc(m)}</li>`).join("")}</ul>` +
       `<div class="fw-mini fw-mini--next"><h4>Recommended next step</h4><p>${esc(d.nextStep)}</p></div>` +
       `<div class="fw-cta"><span>Want a deeper evidence-linked investigation?</span>` +
-        `<span class="fw-cta-btns">` +
-          `<button type="button" class="btn" id="fwRestart">Start over</button>` +
-          `<a href="#pilot" class="btn btn--primary">Request pilot access` +
-            `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>` +
-          `</a>` +
-        `</span></div>`;
+        `<a href="#pilot" class="btn btn--primary">Request pilot access` +
+          `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>` +
+        `</a></div>`;
     resultCard.hidden = false; leadCard.hidden = false;
-    $("fwRestart").addEventListener("click", restart);
     resultCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
-  }
-
-  function restart() {
-    resultCard.hidden = true; leadCard.hidden = true; interviewCard.hidden = true;
-    problemEl.value = ""; showError(errorEl, ""); problemEl.focus();
-    state = { problem: "", category: catEl.value, chain: [] };
-    inputCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
   startBtn.addEventListener("click", start);

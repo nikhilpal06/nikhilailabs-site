@@ -801,7 +801,6 @@ footer .brand__word { color: var(--white); }
 .fw-iv-nav #fwBack { margin-right: auto; }
 .fw-why-q { font-weight: 800; color: var(--teal-deep); }
 .fw-why-a { font-weight: 600; color: var(--navy); }
-.fw-cta-btns { display: flex; gap: 10px; flex-wrap: wrap; }
 .fw-spinner { width: 26px; height: 26px; margin: 18px 0 4px; border: 3px solid var(--paper-2); border-top-color: var(--orange); border-radius: 999px; animation: fwspin .8s linear infinite; }
 @keyframes fwspin { to { transform: rotate(360deg); } }
 
@@ -809,7 +808,6 @@ footer .brand__word { color: var(--white); }
   .fw-row, .fw-grid2, .fw-lead-grid { grid-template-columns: 1fr; }
   .fw-card { padding: 20px; }
   .fw-cta { flex-direction: column; align-items: stretch; }
-  .fw-cta-btns { flex-direction: column; }
   .fw-iv-nav #fwBack { margin-right: 0; }
   .fw-iv-nav .btn { flex: 1 1 auto; }
 }
