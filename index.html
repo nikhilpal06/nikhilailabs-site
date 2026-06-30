@@ -247,32 +247,68 @@
   </div>
 </div>
 
-<!-- ============ AI DIAGNOSTIC ============ -->
+<!-- ============ AI 5 WHY PROBLEM SOLVER ============ -->
 <section id="diagnostic">
   <div class="wrap">
     <div class="sec-head center reveal">
-      <span class="eyebrow"><span class="dot"></span>Try it now — no login</span>
-      <h2>Experience AI-Powered Operational Excellence in 60 seconds</h2>
-      <p>Describe a problem. Get a quick RCA, improvement direction, readiness score, and the right copilot recommendation.</p>
+      <span class="eyebrow"><span class="dot"></span>Free AI tool — no login</span>
+      <h2>AI 5 Why Problem Solver</h2>
+      <p>Describe a problem and get an instant AI 5 Why root-cause draft — refined problem, the full Why chain, likely root cause, and your next step.</p>
     </div>
-    <div class="diag-card reveal">
-      <div class="diag-input">Example: CAPA keeps getting reopened, deviation investigation is taking too long, customer complaints increased, machine downtime is rising, process lead time is too high, or the team has an AI automation idea…</div>
-      <div class="diag-chips">
-        <a href="https://app.nikhilailabs.com/assessment?problem=Deviation%20investigation%20is%20taking%20too%20long">Deviation taking too long</a>
-        <a href="https://app.nikhilailabs.com/assessment?problem=CAPA%20keeps%20getting%20reopened">CAPA keeps reopening</a>
-        <a href="https://app.nikhilailabs.com/assessment?problem=Machine%20downtime%20increased">Machine downtime increased</a>
-        <a href="https://app.nikhilailabs.com/assessment?problem=Customer%20complaints%20are%20rising">Complaints are rising</a>
-        <a href="https://app.nikhilailabs.com/assessment?problem=Process%20lead%20time%20is%20too%20high">Lead time too high</a>
-        <a href="https://app.nikhilailabs.com/assessment?problem=Need%20to%20start%20a%20DMAIC%20project">Start a DMAIC project</a>
-        <a href="https://app.nikhilailabs.com/assessment?problem=Team%20has%20an%20AI%20automation%20idea">AI automation idea</a>
+
+    <div class="fw reveal" id="fiveWhy">
+      <!-- Problem input -->
+      <div class="fw-card" id="fwInputCard">
+        <label class="fw-label" for="fwProblem">Describe the problem</label>
+        <textarea id="fwProblem" class="fw-control fw-textarea" rows="3" placeholder="e.g. Tablet hardness results came back out of specification on Line 3 and the batch is on hold pending investigation."></textarea>
+        <div class="fw-chips" id="fwChips">
+          <button type="button" data-fill="Deviation investigations are taking too long to close and CAPAs keep getting reopened." data-cat="Quality">Deviation taking too long</button>
+          <button type="button" data-fill="Machine downtime on the packaging line has increased steadily over the last month." data-cat="Manufacturing">Machine downtime up</button>
+          <button type="button" data-fill="Customer complaints about product damaged in transit are rising month over month." data-cat="Customer Complaint">Complaints rising</button>
+          <button type="button" data-fill="Incoming raw material lots are failing more often at receiving inspection." data-cat="Supply Chain">Incoming failures</button>
+        </div>
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label" for="fwCategory">Problem category</label>
+            <select id="fwCategory" class="fw-control">
+              <option>Quality</option><option>Manufacturing</option><option>Supply Chain</option>
+              <option>Safety</option><option>Customer Complaint</option><option>Other</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn--primary btn--lg fw-generate" id="fwGenerate">
+            <span class="fw-btn-label">Generate 5 Why</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <p class="fw-error" id="fwError" hidden></p>
       </div>
-      <a href="https://app.nikhilailabs.com/assessment" class="btn btn--primary btn--lg diag-go">Analyze my problem
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <p class="diag-note">No login required for your first quick analysis. For guidance only — final RCA, CAPA and project decisions need qualified human review.</p>
+
+      <!-- Result (rendered by JS) -->
+      <div class="fw-card fw-result-card" id="fwResultCard" hidden></div>
+
+      <!-- Lead capture (revealed after a result) -->
+      <div class="fw-card" id="fwLeadCard" hidden>
+        <h3 class="fw-lead-title">Email me the full 5 Why report</h3>
+        <p class="fw-lead-sub">Get the full evidence-linked version plus a copy of this analysis.</p>
+        <form id="fwLeadForm" novalidate>
+          <div class="fw-lead-grid">
+            <input class="fw-control" id="fwName" placeholder="Name" autocomplete="name" />
+            <input class="fw-control" id="fwEmail" type="email" placeholder="Work email" autocomplete="email" required />
+            <input class="fw-control" id="fwCompany" placeholder="Company" autocomplete="organization" />
+            <input class="fw-control" id="fwRole" placeholder="Role" />
+            <input class="fw-control" id="fwIndustry" placeholder="Industry" />
+          </div>
+          <button type="submit" class="btn btn--primary fw-lead-btn">Email me the full 5 Why report</button>
+          <p class="fw-error" id="fwLeadError" hidden></p>
+          <p class="fw-ok" id="fwLeadOk" hidden>Thanks — we'll send your full report shortly.</p>
+        </form>
+      </div>
+
+      <p class="diag-note fw-disclaimer">AI-generated analysis is for decision support only. Final RCA must be reviewed by qualified personnel.</p>
     </div>
   </div>
 </section>
+<script defer src="assets/five-why.js"></script>
 
 <!-- ============ PRODUCTS ============ -->
 <section id="products">
