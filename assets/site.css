@@ -801,6 +801,11 @@ footer .brand__word { color: var(--white); }
 .fw-iv-nav #fwBack { margin-right: auto; }
 .fw-why-q { font-weight: 800; color: var(--teal-deep); }
 .fw-why-a { font-weight: 600; color: var(--navy); }
+.fw-step-coach { margin: 7px 0 0; padding-left: 10px; border-left: 3px solid var(--orange); font-size: 12.5px; font-weight: 700; color: var(--orange-deep); line-height: 1.4; }
+.fw-atroot { margin: 14px 0 0; padding: 11px 14px; background: var(--tint-teal); border: 2px solid var(--navy); border-radius: var(--radius-sm); font-size: 13.5px; font-weight: 700; color: var(--navy); }
+.fw-iv-nav .btn:disabled { opacity: .6; cursor: progress; }
+.fw-rc-type { display: inline-block; margin: 0 0 8px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; color: var(--navy); background: var(--white); border: 2px solid var(--navy); border-radius: 999px; padding: 3px 10px; }
+.fw-mini--check { background: var(--tint-teal); margin-top: 18px; }
 .fw-spinner { width: 26px; height: 26px; margin: 18px 0 4px; border: 3px solid var(--paper-2); border-top-color: var(--orange); border-radius: 999px; animation: fwspin .8s linear infinite; }
 @keyframes fwspin { to { transform: rotate(360deg); } }
 
