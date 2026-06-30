@@ -787,8 +787,29 @@ footer .brand__word { color: var(--white); }
 .fw-lead-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .fw-lead-btn { margin-top: 14px; }
 .fw-disclaimer { text-align: center; margin-top: 18px; }
+
+/* Guided interview */
+.fw-iv-problem { margin: 14px 0 4px; font-weight: 600; font-size: 14.5px; color: var(--navy); line-height: 1.5; }
+.fw-steps { list-style: none; margin: 14px 0 6px; padding: 0; display: grid; gap: 10px; }
+.fw-step { display: flex; gap: 12px; align-items: flex-start; background: var(--paper); border: 2px solid var(--navy); border-radius: var(--radius-sm); padding: 11px 13px; }
+.fw-step-n { flex: none; width: 26px; height: 26px; display: grid; place-items: center; font-weight: 900; font-size: 13px; color: var(--navy); background: var(--tint-teal); border: 2px solid var(--navy); border-radius: 999px; }
+.fw-step-q { margin: 0 0 2px; font-weight: 800; font-size: 13.5px; color: var(--teal-deep); }
+.fw-step-a { margin: 0; font-weight: 600; color: var(--navy); line-height: 1.45; }
+.fw-iv-current { margin-top: 16px; }
+.fw-iv-current .fw-label { font-size: 16px; color: var(--navy); }
+.fw-iv-nav { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 16px; }
+.fw-iv-nav #fwBack { margin-right: auto; }
+.fw-why-q { font-weight: 800; color: var(--teal-deep); }
+.fw-why-a { font-weight: 600; color: var(--navy); }
+.fw-cta-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.fw-spinner { width: 26px; height: 26px; margin: 18px 0 4px; border: 3px solid var(--paper-2); border-top-color: var(--orange); border-radius: 999px; animation: fwspin .8s linear infinite; }
+@keyframes fwspin { to { transform: rotate(360deg); } }
+
 @media (max-width: 640px) {
   .fw-row, .fw-grid2, .fw-lead-grid { grid-template-columns: 1fr; }
   .fw-card { padding: 20px; }
   .fw-cta { flex-direction: column; align-items: stretch; }
+  .fw-cta-btns { flex-direction: column; }
+  .fw-iv-nav #fwBack { margin-right: 0; }
+  .fw-iv-nav .btn { flex: 1 1 auto; }
 }

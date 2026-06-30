@@ -26,12 +26,37 @@ exports.handler = async (event) => {
   const key = process.env.ANTHROPIC_API_KEY;
   if (!key) return json(200, { configured: false }); // frontend renders its mock
 
+  // synthesize -> assess the user's OWN 5-Why chain (guided interview).
+  // generate   -> legacy one-shot draft (kept for older cached clients).
+  if (body.type === "synthesize") {
+    const chain = Array.isArray(body.chain) ? body.chain.filter((c) => c && c.a).slice(0, 8) : [];
+    if (!chain.length) return json(422, { error: "missing chain" });
+    try {
+      return json(200, { configured: true, result: await claudeSynthesise(key, problem, category, chain) });
+    } catch (e) {
+      return json(200, { configured: false, error: String(e) }); // fail safe -> frontend mock
+    }
+  }
+
   try {
     return json(200, { configured: true, result: await claudeFiveWhy(key, problem, category) });
   } catch (e) {
     return json(200, { configured: false, error: String(e) }); // fail safe -> frontend mock
   }
 };
+
+async function claudeSynthesise(key, problem, category, chain) {
+  const chainText = chain.map((c, i) => `${i + 1}. ${c.q}\n   Answer: ${c.a}`).join("\n");
+  const system = "You are a Lean Six Sigma master black belt reviewing a 5 Why chain the user wrote themselves. Do NOT rewrite their answers. Judge where their reasoning leads, name the most likely root cause to test, flag a weak link if one stands out, list missing evidence, and give safe containment. Never claim proof without data. Return ONLY JSON.";
+  const user =
+    `Problem (category: ${category}): ${problem}\n\n` +
+    `The user's own 5 Why chain:\n${chainText}\n\n` +
+    `Return strictly this JSON shape:\n` +
+    `{"refinedProblem":string,"rootCause":string (deepest testable cause their chain points to; add a one-line caution if a step looks weak),` +
+    `"confidence":string (how solid their chain is, and why),"missingEvidence":[2-4 strings],` +
+    `"containment":string,"nextStep":string}`;
+  return callClaude(key, system, user, 1100);
+}
 
 async function claudeFiveWhy(key, problem, category) {
   const system = "You are a Lean Six Sigma master black belt producing a disciplined 5 Why root-cause DRAFT for an operational problem. Be specific, evidence-aware, and testable — never claim proof without data. Return ONLY JSON.";
@@ -41,12 +66,16 @@ async function claudeFiveWhy(key, problem, category) {
     `{"refinedProblem":string,"whys":[exactly 5 strings, each a full "Why … because …" step],` +
     `"rootCause":string,"confidence":string,"missingEvidence":[2-4 strings],` +
     `"containment":string,"nextStep":string}`;
+  return callClaude(key, system, user, 1300);
+}
+
+async function callClaude(key, system, user, maxTokens) {
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: { "content-type": "application/json", "x-api-key": key, "anthropic-version": "2023-06-01" },
     body: JSON.stringify({
       model: process.env.ANTHROPIC_MODEL || "claude-sonnet-4-6",
-      max_tokens: 1300,
+      max_tokens: maxTokens,
       system,
       messages: [{ role: "user", content: user }],
     }),

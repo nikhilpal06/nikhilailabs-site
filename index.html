@@ -253,7 +253,7 @@
     <div class="sec-head center reveal">
       <span class="eyebrow"><span class="dot"></span>Free AI tool — no login</span>
       <h2>AI 5 Why Problem Solver</h2>
-      <p>Describe a problem and get an instant AI 5 Why root-cause draft — refined problem, the full Why chain, likely root cause, and your next step.</p>
+      <p>Answer one Why at a time — the tool builds each next question from your last answer, then drafts the likely root cause, missing evidence, and your next step.</p>
     </div>
 
     <div class="fw reveal" id="fiveWhy">
@@ -276,12 +276,15 @@
             </select>
           </div>
           <button type="button" class="btn btn--primary btn--lg fw-generate" id="fwGenerate">
-            <span class="fw-btn-label">Generate 5 Why</span>
+            <span class="fw-btn-label">Start 5 Why</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </div>
         <p class="fw-error" id="fwError" hidden></p>
       </div>
+
+      <!-- Guided interview (rendered by JS) -->
+      <div class="fw-card fw-interview-card" id="fwInterviewCard" hidden></div>
 
       <!-- Result (rendered by JS) -->
       <div class="fw-card fw-result-card" id="fwResultCard" hidden></div>
