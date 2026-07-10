@@ -145,7 +145,7 @@
       </div>
       <div class="nav__right">
         <a href="https://app.nikhilailabs.com" class="nav__login">Log in</a>
-        <a href="#pilot" class="btn btn--primary btn--nav">Pilot Request</a>
+        <a href="https://app.nikhilailabs.com/pricing" class="btn btn--primary btn--nav">Pricing</a>
         <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         </button>
@@ -169,7 +169,7 @@
           Human judgment remains central — AI supports structure, evidence review, and decision quality.
         </p>
         <div class="hero__cta">
-          <a href="#pilot" class="btn btn--primary btn--lg">Request pilot
+          <a href="https://app.nikhilailabs.com/pricing" class="btn btn--primary btn--lg">See pricing
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
           <a href="#products" class="btn btn--ghost btn--lg">View products</a>
@@ -223,7 +223,7 @@
             <span class="pv-node"></span>
           </div>
 
-          <a href="#pilot" class="btn btn--primary" style="width:100%">Generate CAPA options
+          <a href="https://app.nikhilailabs.com/pricing" class="btn btn--primary" style="width:100%">Generate CAPA options
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -752,65 +752,15 @@
   <section>
     <div class="wrap">
       <div class="reveal">
-        <span class="eyebrow"><span class="dot"></span>Pilot program</span>
-        <h2>Bring AI into your investigation workflow.</h2>
-        <p>Pilots can begin with anonymized or sample investigations — with a readiness and quality baseline in weeks, not quarters.</p>
-        <form class="pilot-form" id="pilotForm" novalidate>
-          <div class="pf-grid">
-            <div class="pf-field">
-              <label for="pf-name">Name</label>
-              <input id="pf-name" name="name" type="text" autocomplete="name" placeholder="Your name" required />
-            </div>
-            <div class="pf-field">
-              <label for="pf-email">Work email</label>
-              <input id="pf-email" name="email" type="email" autocomplete="email" placeholder="you@yourcompany.com" required />
-            </div>
-            <div class="pf-field">
-              <label for="pf-company">Company</label>
-              <input id="pf-company" name="company" type="text" autocomplete="organization" placeholder="Company name" required />
-            </div>
-            <div class="pf-field">
-              <label for="pf-role">Role / title</label>
-              <select id="pf-role" name="role">
-                <option value="" disabled selected>Select your role</option>
-                <option>QA Manager</option>
-                <option>Operational Excellence Lead</option>
-                <option>Manufacturing Manager</option>
-                <option>CDMO Leader</option>
-                <option>Consultant</option>
-                <option>Student</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="pf-field pf-full">
-              <label for="pf-product">Product interest</label>
-              <select id="pf-product" name="product">
-                <option value="" disabled selected>Which copilot?</option>
-                <option value="Investigation Intelligence Workbench">Investigation Intelligence Workbench</option>
-                <option value="A3 Coach">A3 Coach</option>
-                <option value="Kaizen Event Copilot">Kaizen Event Copilot</option>
-                <option value="Flow Intelligence Copilot">Flow Intelligence Copilot</option>
-                <option value="DMAIC Intelligence Copilot">DMAIC Intelligence Copilot</option>
-                <option value="All">All</option>
-                <option value="Not sure yet">Not sure yet</option>
-              </select>
-            </div>
-            <div class="pf-field pf-full">
-              <label for="pf-message">Message <span class="pf-opt">(optional)</span></label>
-              <textarea id="pf-message" name="message" rows="3" placeholder="What would you like to pilot, and on what kind of investigation or problem?"></textarea>
-            </div>
-          </div>
-          <button type="submit" class="btn btn--lg btn--navy" id="pilotSubmit">Request a pilot
+        <span class="eyebrow"><span class="dot"></span>Pricing</span>
+        <h2>Unlock every AI copilot — from $29/mo.</h2>
+        <p>One subscription unlocks the Investigation Intelligence Workbench, A3 Coach, and Kaizen Event Copilot. Start free, upgrade when you&rsquo;re ready.</p>
+        <div style="margin-top:1.6rem;display:flex;gap:.75rem;flex-wrap:wrap">
+          <a href="https://app.nikhilailabs.com/pricing" class="btn btn--lg btn--navy">See pricing &amp; plans
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-          <p class="pilot-status" id="pilotStatus" role="status" aria-live="polite"></p>
-          <div class="pilot-success" id="pilotSuccess" aria-hidden="true">
-            <div class="check"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
-            <h3>Request received.</h3>
-            <p>Thanks — I&rsquo;ll review it and follow up by email with pilot details.</p>
-          </div>
-        </form>
-        <p class="pilot-note">Designed for a focused, low-friction pilot.</p>
+          </a>
+        </div>
+        <p class="pilot-note">Human-in-the-loop by design. Cancel anytime.</p>
       </div>
     </div>
   </section>
@@ -832,7 +782,7 @@
           <a href="https://www.linkedin.com/in/nikhilpal" target="_blank" rel="noopener" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.76-1.95C20.4 8.75 22 10.9 22 14.5V21h-4v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.2 1.48-2.2 3v5.8H9V9Z"/></svg>
           </a>
-          <a href="#pilot" aria-label="Contact">
+          <a href="https://app.nikhilailabs.com/pricing" aria-label="Contact">
             <svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm.5 2L12 13l8.5-6"/></svg>
           </a>
         </div>
@@ -844,7 +794,7 @@
         <a href="products/kaizen-event-copilot.html">Kaizen Event Copilot</a>
         <a href="products/flow-intelligence-copilot.html">Flow Intelligence Copilot</a>
         <a href="products/dmaic-intelligence-copilot.html">DMAIC Intelligence Copilot</a>
-        <a href="#pilot">Pilot Request</a>
+        <a href="https://app.nikhilailabs.com/pricing">Pricing</a>
       </div>
       <div class="foot-col">
         <h4>Solutions</h4>
@@ -860,8 +810,8 @@
       <div class="foot-col">
         <h4>Connect</h4>
         <a href="https://www.linkedin.com/in/nikhilpal" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="#pilot">Contact</a>
-        <a href="#pilot">Request a pilot</a>
+        <a href="https://app.nikhilailabs.com/pricing">Contact</a>
+        <a href="https://app.nikhilailabs.com/pricing">See pricing</a>
       </div>
     </div>
     <p class="foot-disclaimer"><strong>Important:</strong> Nikhil AI Labs tools are designed to support investigation workflows and decision-making. They do not replace quality approval, regulatory judgment, or authorized QMS processes.</p>
