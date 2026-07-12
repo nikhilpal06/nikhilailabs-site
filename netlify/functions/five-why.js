@@ -28,9 +28,32 @@ exports.handler = async (event) => {
   if (body.type === "lead") {
     const email = String(body.email || "").trim();
     if (!EMAIL_RE.test(email)) return json(422, { error: "invalid email" });
-    // ponytail: leads land in the function logs for now. Wire to Kit or forward to
-    // app.nikhilailabs.com/api/assessment/lead before you rely on this for capture.
-    console.log("[5why-lead]", JSON.stringify({ ...body, ts: new Date().toISOString() }));
+    // Forward to the platform so the lead lands in the same AssessmentLead store + Kit.
+    // Best-effort: never fail the visitor's submission on a downstream hiccup.
+    const target = process.env.LEADS_ENDPOINT || "https://app.nikhilailabs.com/api/tool-leads";
+    try {
+      await fetch(target, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          source: "5-Why Problem Solver",
+          email,
+          consent: true, // submitting the email to receive the result is the opt-in
+          name: String(body.name || "") || null,
+          company: String(body.company || "") || null,
+          role: String(body.role || "") || null,
+          problemText: String(body.problem || "").slice(0, 4000),
+          meta: {
+            category: String(body.category || "") || null,
+            industry: String(body.industry || "") || null,
+            chain: Array.isArray(body.chain) ? body.chain.slice(0, 8) : [],
+          },
+        }),
+      });
+    } catch (e) {
+      console.error("[5why-lead] forward failed:", String(e));
+    }
+    console.log("[5why-lead]", JSON.stringify({ email, ts: new Date().toISOString() }));
     return json(200, { ok: true });
   }
 
