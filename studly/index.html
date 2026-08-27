@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Studly – AI Math Solver and Learning Companion | Nikhil AI Labs</title>
+<meta name="description" content="Understand mathematics with step-by-step AI explanations, solution verification, personalised practice, and mastery tracking. Studly shows what it read before it answers, and helps you learn the concept — not just copy the answer." />
+<link rel="canonical" href="https://nikhilailabs.com/studly/" />
+<meta property="og:title" content="Studly – Understand math. Don't just solve it." />
+<meta property="og:description" content="An AI math learning companion that explains problems step by step, checks your work, and helps you master the concept behind every answer." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nikhilailabs.com/studly/" />
+<meta property="og:image" content="https://nikhilailabs.com/studly/img/feature.png" />
+<meta property="og:image:width" content="1024" />
+<meta property="og:image:height" content="500" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../assets/logo.svg" />
+<link rel="stylesheet" href="../assets/site.css" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LNRHH1434T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LNRHH1434T');
+</script>
+
+<!-- ============ STUDLY PRODUCT BRANDING (scoped to this page) ============
+     Matches the App Store / Google Play screenshots: indigo-to-violet
+     gradient, teal "verified", Inter, soft rounded surfaces with soft shadows.
+     Everything here is scoped to this page. assets/site.css is shared with the
+     rest of the site and is deliberately NOT modified. -->
+<style>
+  /* Inter, self-hosted beside Montserrat (SIL Open Font License) so the page
+     keeps the site's no-third-party-font policy. */
+  @font-face{
+    font-family:"Inter"; font-style:normal; font-weight:100 900; font-display:swap;
+    src:url("../assets/fonts/inter.woff2") format("woff2");
+  }
+
+  :root{
+    /* Studly product palette - the exact values used in the store screenshots */
+    --sa:#4F46E5;        /* indigo, primary             */
+    --sa-2:#7C3AED;      /* violet                      */
+    --sa-deep:#4338CA;   /* deep indigo, gradient start */
+    --sa-tint:#F1F0FE;   /* lavender wash               */
+    --ok:#0EA47F;        /* verified / success          */
+    --ok-tint:#E8F6F1;
+    --xp:#E8890C;
+
+    --s-ink:#12141A; --s-body:#5B6472; --s-faint:#98A0AC;
+    --s-line:#E4E7EC; --s-page:#F7F8FA;
+    --s-grad:linear-gradient(158deg,#4338CA 0%,#5C39DE 55%,#7C3AED 100%);
+    --s-soft:0 8px 24px rgba(22,16,84,.08);
+    --s-soft-lg:0 26px 64px rgba(22,16,84,.18);
+    --s-r:20px;
+  }
+
+  /* ---------- base ---------- */
+  body{ font-family:"Inter","Montserrat",system-ui,-apple-system,sans-serif;
+        background:var(--s-page); color:var(--s-body); }
+  h1,h2,h3,h4{ color:var(--s-ink); letter-spacing:-.024em; font-weight:800; }
+  .lead,.sec-head p,main p{ color:var(--s-body); }
+  .t-navy{ color:var(--s-ink); } .t-teal{ color:var(--ok); } .t-orange{ color:var(--sa); }
+
+  /* ---------- buttons: soft, no hard offset ---------- */
+  .btn{ border:0; border-radius:14px; box-shadow:none; font-weight:700;
+        transition:transform .15s var(--ease), box-shadow .15s var(--ease), background .15s var(--ease); }
+  .btn:hover{ transform:translateY(-2px); box-shadow:var(--s-soft); }
+  .btn:active{ transform:translateY(0); box-shadow:none; }
+  .btn:focus-visible{ outline:3px solid var(--sa); outline-offset:3px; }
+  .btn--lg{ border-radius:16px; }
+  .btn--studly{ background:var(--s-grad); color:#fff; box-shadow:0 10px 26px rgba(79,70,229,.32); }
+  .btn--studly:hover{ background:var(--s-grad); box-shadow:0 16px 36px rgba(79,70,229,.42); }
+  .btn--ghost{ background:#fff; color:var(--sa); border:2px solid var(--s-line); }
+  .btn--ghost:hover{ background:#fff; border-color:var(--sa); }
+  .btn--navy{ background:var(--s-ink); color:#fff; }
+  .btn--navy:hover{ background:#000; }
+
+  .eyebrow{ background:var(--sa-tint); color:var(--sa); border:0; box-shadow:none; font-weight:700; }
+  .eyebrow .dot, .eyebrow.s-eye .dot{ background:var(--sa); }
+  .s-hl{ color:var(--sa); }
+
+  /* ---------- hero: the gradient that carries the brand ---------- */
+  .phero{ background:var(--s-grad); text-align:left; padding:64px 0 84px; }
+  .phero h1{ color:#fff; max-width:none; margin:18px 0 20px; }
+  .phero .lead{ color:rgba(255,255,255,.86); max-width:none; margin:0 0 30px; }
+  .phero .crumb, .phero .crumb a{ color:rgba(255,255,255,.68); }
+  .phero .s-hl{ color:#7FE7C4; }
+  .phero .eyebrow{ background:rgba(255,255,255,.16); color:#fff; }
+  .phero .eyebrow .dot{ background:#fff; }
+  .phero .s-trust{ color:rgba(255,255,255,.82); }
+  .phero .s-trust svg{ stroke:#7FE7C4; }
+  .phero .btn--ghost{ background:rgba(255,255,255,.14); color:#fff; border-color:rgba(255,255,255,.34); }
+  .phero .btn--ghost:hover{ background:rgba(255,255,255,.24); border-color:rgba(255,255,255,.5); }
+  .phero .cta-row{ justify-content:flex-start; }
+
+  /* ---------- device + floating chips ---------- */
+  .sphone{ width:100%; max-width:288px; margin:0 auto; background:#fff; overflow:hidden;
+           border:0; border-radius:34px; box-shadow:var(--s-soft-lg); }
+  .sphone img{ width:100%; display:block; }
+  .shero{ display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; }
+  .shero-visual{ position:relative; }
+  .schip{ position:absolute; display:inline-flex; align-items:center; gap:7px; white-space:nowrap;
+          background:#fff; border:0; border-radius:999px; padding:9px 15px;
+          font-size:12.5px; font-weight:700; color:var(--s-ink); box-shadow:var(--s-soft); }
+  .schip svg{ width:15px; height:15px; }
+  .schip.ok{ color:var(--ok); } .schip.ok svg{ stroke:var(--ok); }
+  .schip--a{ top:8%; left:-14px; } .schip--b{ top:44%; right:-10px; } .schip--c{ bottom:9%; left:6px; }
+  .s-trust{ display:flex; align-items:center; gap:9px; margin-top:18px; font-size:14px; font-weight:600; }
+  .s-trust svg{ width:18px; height:18px; flex:none; stroke:var(--ok); }
+
+  /* ---------- surfaces: soft cards replace hard-shadow tiles ---------- */
+  .tile,.scard,.spcard,.sfaq,.smastery,.spill,.scard-shot,.proof-card{
+    border:1px solid var(--s-line); box-shadow:var(--s-soft); border-radius:var(--s-r); background:#fff; }
+  .tile:hover{ transform:translateY(-3px); box-shadow:0 16px 40px rgba(22,16,84,.13); }
+  .tile.feature{ background:var(--s-ink); border-color:var(--s-ink); }
+  .tile.feature .ico{ background:var(--sa); }
+  .tile.feature .ico svg{ stroke:#fff; }
+  .ico{ border:0; border-radius:15px; background:var(--sa-tint); box-shadow:none; }
+  .ico svg{ stroke:var(--sa); }
+
+  .scompare{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  .scard{ padding:26px; }
+  .scard h3{ font-size:19px; display:flex; align-items:center; gap:10px; }
+  .scard--muted{ background:#fff; }
+  .scard--studly{ background:var(--sa-tint); border-color:#DED9FB; }
+  .scard ul{ list-style:none; margin:18px 0 0; padding:0; }
+  .scard li{ display:flex; gap:10px; align-items:flex-start; padding:8px 0;
+             font-weight:500; color:var(--s-ink); font-size:15.5px; }
+  .scard li svg{ width:19px; height:19px; flex:none; margin-top:1px; }
+  .tick{ stroke:var(--ok); } .cross{ stroke:#B4BAC6; }
+  .tag{ display:inline-block; font-size:11px; font-weight:700; letter-spacing:.08em;
+        text-transform:uppercase; padding:5px 11px; border-radius:999px; border:0; }
+  .tag--muted{ background:#EFF1F5; color:#6B7280; } .tag--studly{ background:var(--sa); color:#fff; }
+
+  .snum{ width:42px; height:42px; border:0; border-radius:14px; background:var(--s-grad);
+         color:#fff; display:grid; place-items:center; font-weight:800; font-size:18px;
+         box-shadow:0 6px 16px rgba(79,70,229,.30); }
+  .spills{ display:flex; flex-wrap:wrap; gap:12px; }
+  .spill{ border-radius:999px; padding:11px 19px; font-weight:600; font-size:15px; color:var(--s-ink); }
+
+  /* mastery panel */
+  .smastery{ padding:26px; max-width:520px; }
+  .sm-row{ display:flex; align-items:center; justify-content:space-between; gap:14px; margin:14px 0; }
+  .sm-row .lbl{ font-weight:700; color:var(--s-ink); font-size:15px; min-width:96px; }
+  .sm-bar{ flex:1; height:12px; background:#EDEFF5; border:0; border-radius:999px; overflow:hidden; }
+  .sm-bar i{ display:block; height:100%; }
+  .band{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em;
+         padding:4px 10px; border:0; border-radius:999px; white-space:nowrap; }
+  .band--strong{ background:var(--ok-tint); color:var(--ok); }
+  .band--dev{ background:#FFF3E0; color:var(--xp); }
+  .band--needs{ background:#FDEAEA; color:#C0392B; }
+  .band--none{ background:#EFF1F5; color:#6B7280; }
+  .sm-xp{ display:flex; align-items:center; gap:10px; margin-top:20px; padding-top:18px;
+          border-top:1px solid var(--s-line); font-weight:700; color:var(--s-ink); }
+  .sm-xp b{ color:var(--xp); }
+
+  /* pricing */
+  .sprice{ display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:start; }
+  .spcard{ padding:28px; }
+  .spcard .price{ font-size:40px; font-weight:800; color:var(--s-ink); letter-spacing:-.03em; margin:6px 0 2px; }
+  .spcard .price small{ font-size:15px; font-weight:600; color:inherit; opacity:.7; }
+  .spcard ul{ list-style:none; margin:18px 0 22px; padding:0; }
+  .spcard li{ display:flex; gap:10px; align-items:flex-start; padding:7px 0; font-weight:500; font-size:15px; }
+  .spcard li svg{ width:18px; height:18px; flex:none; margin-top:2px; stroke:var(--ok); }
+  .spcard--plus{ background:var(--s-grad); border:0; color:#fff; box-shadow:var(--s-soft-lg); }
+  .spcard--plus h3, .spcard--plus .price{ color:#fff; }
+  .spcard--plus li svg{ stroke:#7FE7C4; }
+  .sp-note{ text-align:center; font-size:13px; color:var(--s-body); margin-top:16px; }
+
+  .squote{ font-weight:800; color:var(--sa); font-size:18px; line-height:1.25; letter-spacing:-.015em; }
+
+  /* FAQ */
+  .sfaq{ margin:0 0 14px; overflow:hidden; border-radius:16px; }
+  .sfaq summary{ cursor:pointer; list-style:none; padding:18px 22px; font-weight:700;
+                 color:var(--s-ink); font-size:17px; display:flex; justify-content:space-between;
+                 align-items:center; gap:14px; }
+  .sfaq summary::-webkit-details-marker{ display:none; }
+  .sfaq summary .ic{ width:22px; height:22px; flex:none; stroke:var(--sa); transition:transform .2s var(--ease); }
+  .sfaq[open] summary .ic{ transform:rotate(45deg); }
+  .sfaq .ans{ padding:0 22px 20px; color:var(--s-body); font-size:15.5px; line-height:1.65; }
+
+  /* bands */
+  .band-navy{ background:var(--s-ink); background-image:none; border:0; }
+  .band-navy .eyebrow{ background:rgba(255,255,255,.14); color:#fff; }
+  .band-navy .eyebrow .dot{ background:#7FE7C4; }
+  .band-studly{ background:var(--s-grad); border:0; }
+  .band-studly h2{ color:#fff; }
+  .band-studly p, .band-studly .sec-head p{ color:rgba(255,255,255,.85); }
+  .band-studly .eyebrow{ background:rgba(255,255,255,.16); color:#fff; }
+  .band-studly .eyebrow .dot{ background:#fff; }
+  .band-studly .btn--studly{ background:#fff; color:var(--sa-deep); box-shadow:0 10px 26px rgba(0,0,0,.20); }
+  .band-studly .btn--studly:hover{ background:#fff; box-shadow:0 16px 36px rgba(0,0,0,.28); }
+
+  /* ---------- store badge placeholders ---------- */
+  .storerow{ display:flex; gap:14px; flex-wrap:wrap; margin:28px 0 0; }
+  .storebadge{ display:inline-flex; flex-direction:column; justify-content:center; gap:2px;
+               min-width:212px; height:64px; padding:0 22px; border-radius:13px;
+               background:rgba(255,255,255,.12); color:#fff; text-decoration:none;
+               border:2px dashed rgba(255,255,255,.45); }
+  .storebadge em{ font-style:normal; font-size:11px; letter-spacing:.06em;
+                  text-transform:uppercase; opacity:.85; }
+  .storebadge b{ font-size:19px; font-weight:800; letter-spacing:-.015em; }
+  .storenote{ font-size:13.5px; color:rgba(255,255,255,.72); margin:16px 0 26px; }
+
+  /* gallery */
+  .sgallery{ display:flex; gap:22px; overflow-x:auto; padding:6px 2px 20px; scroll-snap-type:x mandatory; }
+  .sgallery .sphone{ flex:0 0 auto; max-width:230px; scroll-snap-align:center; }
+  .scard-shot{ flex:0 0 auto; width:250px; max-width:74vw; border-radius:24px;
+               overflow:hidden; scroll-snap-align:center; }
+  .scard-shot img{ display:block; width:100%; height:auto; }
+
+  @media (max-width:900px){
+    .shero{ grid-template-columns:1fr; gap:30px; }
+    .shero-visual{ order:-1; }
+    .scompare, .sprice{ grid-template-columns:1fr; }
+    .phero{ padding:48px 0 62px; }
+  }
+  @media (max-width:520px){
+    .schip{ font-size:11px; padding:7px 11px; }
+    .schip--a{ left:-6px; } .schip--b{ right:-4px; }
+    .storebadge{ min-width:0; flex:1 1 100%; }
+  }
+
+  /* ---------- corrections after visual review ---------- */
+  /* chips were being clipped by the phone: give both an explicit stack order */
+  .sphone{ position:relative; z-index:1; }
+  .schip{ z-index:3; }
+  /* primary CTA sat gradient-on-gradient in the hero, so invert it for contrast */
+  .phero .btn--studly{ background:#fff; color:var(--sa-deep); box-shadow:0 10px 26px rgba(0,0,0,.18); }
+  .phero .btn--studly:hover{ background:#fff; box-shadow:0 16px 36px rgba(0,0,0,.26); }
+  .phero .btn--studly svg{ stroke:var(--sa-deep); }
+  /* soften the shared nav shell on this page so it matches the new surfaces */
+  .nav{ border:1px solid var(--s-line) !important; box-shadow:var(--s-soft) !important;
+        background:#fff !important; border-radius:16px !important; }
+  .nav__links a{ color:var(--s-ink); }
+  .nav__login{ color:var(--s-body); }
+  .brand__word{ color:var(--s-ink); }
+  .band-studly .cta-row{ justify-content:flex-start; }
+  .spcard--plus .btn--studly{ background:#fff; color:var(--sa-deep); box-shadow:0 8px 22px rgba(0,0,0,.18); }
+  .spcard--plus .btn--studly:hover{ background:#fff; box-shadow:0 14px 32px rgba(0,0,0,.26); }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav-shell">
+  <div class="wrap">
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="../index.html" class="brand" aria-label="Nikhil AI Labs home">
+        <span class="brand__mark" aria-hidden="true">N</span>
+        <span class="brand__word">Nikhil <span class="ai">AI</span> Labs</span>
+      </a>
+      <div class="nav__links">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="../index.html#products">More products</a>
+      </div>
+      <div class="nav__right">
+        <a href="mailto:hello@nikhilailabs.com?subject=Studly%20launch%20updates" class="nav__login">Get updates</a>
+        <a href="#get" class="btn btn--studly btn--nav">Get Studly</a>
+        <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="phero">
+  <div class="wrap">
+    <div class="shero reveal">
+      <div>
+        <p class="crumb"><a href="../index.html#products">Products</a>
+          <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg> Studly</p>
+        <span class="eyebrow s-eye"><span class="dot"></span>Your AI math learning companion</span>
+        <h1>Understand math.<br><span class="s-hl">Don't just solve it.</span></h1>
+        <p class="lead">Take a photo of any math problem and Studly guides you through the solution, explains the reasoning, and helps you practise until the concept truly makes sense — one problem at a time.</p>
+        <div class="cta-row">
+          <a href="#get" class="btn btn--studly btn--lg">Start learning
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#how" class="btn btn--ghost btn--lg">See how it works</a>
+        </div>
+        <p class="s-trust"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> For students 13+, from middle school through college.</p>
+      </div>
+      <div class="shero-visual">
+        <div class="sphone"><img src="img/solve.png" alt="The Studly app: snap a photo of a math problem, or type it in — one problem at a time." width="270" height="585" /></div>
+        <span class="schip schip--a">Shows what it read</span>
+        <span class="schip schip--b ok"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Answer verified</span>
+        <span class="schip schip--c">Hint · Guide · Solve · Teach</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MORE THAN AN ANSWER ============ -->
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow s-eye"><span class="dot"></span>More than an answer</span>
+      <h2>Every question becomes a learning opportunity.</h2>
+      <p>Most math-solving tools stop once they show you the answer. Studly goes further — it breaks down the reasoning, names the concept, and helps you practise what you have learned.</p>
+    </div>
+    <div class="scompare reveal">
+      <div class="scard scard--muted">
+        <span class="tag tag--muted">Typical solver</span>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" class="cross" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Hands over the final answer</li>
+          <li><svg viewBox="0 0 24 24" fill="none" class="cross" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Encourages copying</li>
+          <li><svg viewBox="0 0 24 24" fill="none" class="cross" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Little or no practice</li>
+          <li><svg viewBox="0 0 24 24" fill="none" class="cross" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Doesn't track what you understand</li>
+        </ul>
+      </div>
+      <div class="scard scard--studly">
+        <span class="tag tag--studly">Studly</span>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" class="tick" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Explains each step clearly</li>
+          <li><svg viewBox="0 0 24 24" fill="none" class="tick" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Helps you understand <em>why</em> it works</li>
+          <li><svg viewBox="0 0 24 24" fill="none" class="tick" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Generates similar practice questions</li>
+          <li><svg viewBox="0 0 24 24" fill="none" class="tick" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tracks your progress and mastery</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<div class="band-navy">
+  <section id="how">
+    <div class="wrap">
+      <div class="sec-head reveal" style="color:#fff">
+        <span class="eyebrow s-eye"><span class="dot"></span>How Studly works</span>
+        <h2 style="color:#fff">From confusion to confidence in three steps.</h2>
+      </div>
+      <div class="cap-grid reveal">
+        <article class="tile">
+          <div class="snum">1</div>
+          <h3>Capture the problem</h3>
+          <p>Take a photo, upload an image, or type your question. Before it answers, Studly shows you what it read — so a misread digit gets caught before it becomes a wrong answer.</p>
+        </article>
+        <article class="tile">
+          <div class="snum">2</div>
+          <h3>Learn the method</h3>
+          <p>Studly explains the solution step by step and highlights the formulas, rules, and concepts in play — and where the maths can be checked, it verifies the answer with a symbolic engine.</p>
+        </article>
+        <article class="tile">
+          <div class="snum">3</div>
+          <h3>Practise and master</h3>
+          <p>Try a similar question, show your own working for feedback, and watch each topic move toward "strong" as the evidence builds.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ CORE FEATURES ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow s-eye"><span class="dot"></span>Core features</span>
+      <h2>Everything you need to get better at math.</h2>
+    </div>
+    <div class="cap-grid reveal">
+      <article class="tile">
+        <div class="ico t-navy"><svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3.2"/></svg></div>
+        <h3>Photo to solution</h3>
+        <p>Snap it or type it. Studly reads the problem, shows you what it read, and returns a structured, easy-to-follow explanation — one problem at a time.</p>
+      </article>
+      <article class="tile">
+        <div class="ico t-teal"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
+        <h3>Step-by-step explanations</h3>
+        <p>See how every step connects. Studly explains the reasoning behind each transformation instead of jumping straight to the answer.</p>
+      </article>
+      <article class="tile">
+        <div class="ico t-navy"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Answers that are checked</h3>
+        <p>Where the maths can be checked, Studly re-computes it with a symbolic engine — not by asking the same AI twice. When something can't be verified, it says so.</p>
+      </article>
+      <article class="tile">
+        <div class="ico t-orange"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 3Z"/></svg></div>
+        <h3>Four ways to get help</h3>
+        <p>You choose how much help you want — <b>Hint</b>, <b>Guide me</b>, <b>Solve</b>, or <b>Teach me</b> the concept first. Asking for the full solution is never treated as cheating.</p>
+      </article>
+      <article class="tile">
+        <div class="ico t-teal"><svg viewBox="0 0 24 24"><path d="M12 20h9M3 20V10M8 20V4M17 20v-6"/><path d="M16 5l2 2 3-3"/></svg></div>
+        <h3>Verify my work</h3>
+        <p>Photograph the steps you wrote yourself. Studly checks each one and tells you <em>which</em> step went wrong — not just that the final answer was.</p>
+      </article>
+      <article class="tile">
+        <div class="ico t-orange"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9M3 12H1m2 0 3-3M12 7v5l3 2"/></svg></div>
+        <h3>Personalised practice</h3>
+        <p>Reinforce a concept while it's fresh. Studly generates similar questions based on the topic and difficulty of the problem you just worked through.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APP GALLERY ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow s-eye"><span class="dot"></span>Inside the app</span>
+      <h2>Built to be understood.</h2>
+    </div>
+    <div class="sgallery reveal" role="list" aria-label="Studly app screenshots">
+      <div class="scard-shot" role="listitem"><img src="img/card-solve.png" alt="Snap it, solve it, understand it — photo or type, one problem at a time." loading="lazy" width="250" height="444" /></div>
+      <div class="scard-shot" role="listitem"><img src="img/card-help.png" alt="Help that matches how you learn: a hint, a guided walkthrough, or the full solution." loading="lazy" width="250" height="444" /></div>
+      <div class="scard-shot" role="listitem"><img src="img/card-verified.png" alt="Every answer independently verified, re-computed with a symbolic maths engine." loading="lazy" width="250" height="444" /></div>
+      <div class="scard-shot" role="listitem"><img src="img/card-learning.png" alt="Know exactly where you stand — build a course and watch your progress take shape." loading="lazy" width="250" height="444" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEARNING EXPERIENCE ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow s-eye"><span class="dot"></span>The learning experience</span>
+      <h2>Built to help you think — not copy.</h2>
+      <p>Studly encourages you to attempt the problem, show your reasoning, and learn from mistakes. The goal isn't to finish homework faster — it's to make you a more confident, independent problem-solver.</p>
+    </div>
+    <div class="cap-grid reveal">
+      <article class="tile">
+        <div class="ico t-teal"><svg viewBox="0 0 24 24"><path d="M12 3a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1v.2h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 3ZM9 21h6"/></svg></div>
+        <h3>Explain it differently</h3>
+        <p>Ask Studly to simplify the explanation, use another method, or teach the concept before the problem.</p>
+      </article>
+      <article class="tile">
+        <div class="ico t-orange"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v3M11 14h.01"/></svg></div>
+        <h3>Find my mistake</h3>
+        <p>See exactly where your solution changed direction — and understand how to correct it.</p>
+      </article>
+      <article class="tile">
+        <div class="ico t-navy"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9M3 12H1m2 0 3-3M12 7v5l3 2"/></svg></div>
+        <h3>Give me another problem</h3>
+        <p>Practise a similar question immediately to lock the concept in while it's fresh.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRESS / MASTERY ============ -->
+<div class="s-tint">
+  <section id="progress">
+    <div class="wrap">
+      <div class="shero reveal">
+        <div>
+          <span class="eyebrow s-eye"><span class="dot"></span>Progress that means something</span>
+          <h2>Know what you actually understand.</h2>
+          <p class="lead">Studly builds a picture of what you know from what you actually do. Topics move between <b>needs work</b>, <b>developing</b>, and <b>strong</b> based on evidence — earn XP as you go, and when there isn't enough evidence yet, Studly says so instead of inventing a score.</p>
+          <p class="s-trust"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> No progress number it hasn't earned the right to show you.</p>
+        </div>
+        <div>
+          <div class="smastery">
+            <div class="sm-row"><span class="lbl">Algebra</span><div class="sm-bar"><i style="width:82%;background:var(--ok)"></i></div><span class="band band--strong">Strong</span></div>
+            <div class="sm-row"><span class="lbl">Geometry</span><div class="sm-bar"><i style="width:55%;background:var(--xp)"></i></div><span class="band band--dev">Developing</span></div>
+            <div class="sm-row"><span class="lbl">Trigonometry</span><div class="sm-bar"><i style="width:28%;background:#e07a7a"></i></div><span class="band band--needs">Needs work</span></div>
+            <div class="sm-row"><span class="lbl">Calculus</span><div class="sm-bar"><i style="width:8%;background:#c3c8d4"></i></div><span class="band band--none">Not enough yet</span></div>
+            <div class="sm-xp"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--xp)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 3Z"/></svg> <span>Earn <b>XP</b> and level up as you learn</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ TOPICS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow s-eye"><span class="dot"></span>Topics</span>
+      <h2>One learning companion for every stage of math.</h2>
+      <p>Whether you're reviewing the basics, preparing for an exam, or working through advanced mathematics, Studly adapts the explanation to your level.</p>
+    </div>
+    <div class="spills reveal">
+      <span class="spill">Arithmetic</span>
+      <span class="spill">Pre-Algebra</span>
+      <span class="spill">Algebra</span>
+      <span class="spill">Geometry</span>
+      <span class="spill">Trigonometry</span>
+      <span class="spill">Calculus</span>
+      <span class="spill">Statistics</span>
+      <span class="spill">Probability</span>
+      <span class="spill">Linear Algebra</span>
+      <span class="spill">Exam practice</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCENARIOS (in place of testimonials) ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow s-eye"><span class="dot"></span>Made for the hard moments</span>
+      <h2>Designed around where students actually get stuck.</h2>
+    </div>
+    <div class="cap-grid reveal">
+      <article class="tile">
+        <p class="squote">“I don't understand how they got that answer.”</p>
+        <p>Studly explains the missing reasoning between each step, so the jump finally makes sense.</p>
+      </article>
+      <article class="tile">
+        <p class="squote">“I know I made a mistake, but I can't find it.”</p>
+        <p>Studly reviews your method and points to the exact step where the solution changed direction.</p>
+      </article>
+      <article class="tile">
+        <p class="squote">“I get the example, but I need more practice.”</p>
+        <p>Studly creates similar questions so you can reinforce the concept right away.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow s-eye"><span class="dot"></span>Pricing</span>
+      <h2>Start free. Upgrade when you need more.</h2>
+    </div>
+    <div class="sprice reveal">
+      <div class="spcard">
+        <h3>Free</h3>
+        <div class="price">$0</div>
+        <p style="margin:0 0 4px;font-weight:700;color:var(--s-ink)">For students who want to explore Studly.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 5 AI Assists per day, 2 follow-ups each</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Step-by-step explanations</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> All four help modes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> XP and mastery tracking</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Core mathematics topics</li>
+        </ul>
+        <a href="#get" class="btn btn--ghost btn--lg" style="width:100%">Start free</a>
+      </div>
+      <div class="spcard spcard--plus">
+        <h3>Studly Plus</h3>
+        <div class="price">See in-app <small>· monthly or annual</small></div>
+        <p style="margin:0 0 4px;font-weight:700;color:#cfe0ff">For students who want to learn without interruptions.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 20 AI Assists per day, 12 follow-ups each</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Answers from the stronger AI model</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Solution verification &amp; work-checking</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Personalised practice questions</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Detailed mastery tracking</li>
+        </ul>
+        <a href="#get" class="btn btn--studly btn--lg" style="width:100%">Get Studly Plus</a>
+      </div>
+    </div>
+    <p class="sp-note">No passwords — sign in with Apple, Google, or a one-time email code. Subscription limits and features may be adjusted as Studly continues to improve; current pricing is shown on the in-app paywall.</p>
+  </div>
+</section>
+
+<!-- ============ WHAT STUDLY IS NOT ============ -->
+<div class="philo">
+  <section>
+    <div class="wrap">
+      <div class="statement reveal">
+        <span class="eyebrow s-eye"><span class="dot"></span>What Studly is not</span>
+        <p class="lines" style="margin-top:24px">It isn't an answer engine<br>with a subscription attached.</p>
+        <p>Studly won't pretend a correct answer means you understood something, and it won't show you a progress number it hasn't earned. It's a learning companion — built to support your classroom, your independent study, and your practice, not to replace a teacher.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ FINAL CTA ============ -->
+<div class="band-studly" id="get">
+  <section>
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow s-eye"><span class="dot"></span>Get started</span>
+        <h2>Your next math problem could be the one that finally makes sense.</h2>
+        <p>Studly is coming to the App Store and Google Play. These links go live at launch.</p>
+
+        <!-- =====================================================================
+             STORE BADGE PLACEHOLDERS
+
+             Replace each <span class="storebadge"> with the OFFICIAL badge
+             artwork, which both stores require to be used unmodified:
+               Apple   https://developer.apple.com/app-store/marketing/guidelines/
+               Google  https://play.google.com/intl/en_us/badges/
+
+             At launch, for each badge:
+               1. drop the official SVG/PNG into studly/img/
+               2. swap the <span class="storebadge is-placeholder"> for
+                  <a class="storebadge" href="STORE_URL"><img src="..." alt="..."></a>
+               3. delete the .storenote paragraph below
+
+             The placeholder is 212x64, close to both badges' rendered footprint,
+             so the layout will not jump when they are swapped in.
+             ===================================================================== -->
+        <div class="storerow">
+          <span class="storebadge is-placeholder" role="img" aria-label="Coming soon to the App Store">
+            <em>Coming soon on the</em><b>App Store</b>
+          </span>
+          <span class="storebadge is-placeholder" role="img" aria-label="Coming soon on Google Play">
+            <em>Coming soon on</em><b>Google Play</b>
+          </span>
+        </div>
+        <p class="storenote">Want to know the moment it lands?</p>
+
+        <div class="cta-row">
+          <a href="mailto:hello@nikhilailabs.com?subject=Studly%20launch%20updates&amp;body=I%27d%20like%20to%20be%20notified%20when%20Studly%20launches." class="btn btn--lg btn--studly">Get launch updates
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow s-eye"><span class="dot"></span>FAQ</span>
+      <h2>Questions, answered.</h2>
+    </div>
+    <div class="reveal" style="max-width:800px;margin:0 auto">
+      <details class="sfaq">
+        <summary>What is Studly? <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="ans">Studly is an AI-powered mathematics learning app. It gives step-by-step explanations, personalised practice, solution verification, and honest progress tracking — so you understand the method, not just the answer.</div>
+      </details>
+      <details class="sfaq">
+        <summary>Does Studly only give the final answer? <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="ans">No. Studly is designed to explain the reasoning and concepts behind a solution so you can solve similar problems on your own. You choose how much help you want — a hint, a guided walkthrough, the full solution, or the concept taught first.</div>
+      </details>
+      <details class="sfaq">
+        <summary>What math levels does Studly support? <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="ans">Studly is built for learners from middle school through college, across topics from arithmetic and algebra to trigonometry, calculus, and statistics. It adapts the explanation to your level rather than aligning to one specific curriculum.</div>
+      </details>
+      <details class="sfaq">
+        <summary>Can Studly check my own solution? <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="ans">Yes. Photograph the steps you wrote yourself and Studly reads them, checks each one, and tells you which step went wrong — not just that the final answer was.</div>
+      </details>
+      <details class="sfaq">
+        <summary>How does verification work? <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="ans">Where the mathematics can be checked, Studly re-computes the answer independently with a symbolic maths engine — not by asking the same AI a second time. The reasoning steps are explained, not formally proved, and when something can't be verified, Studly says so rather than sounding confident anyway.</div>
+      </details>
+      <details class="sfaq">
+        <summary>Is Studly free? <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="ans">Yes — the free plan includes 5 AI Assists a day with two follow-up questions each. Studly Plus raises that to 20 a day, routes your answers to a stronger model, and adds solution verification and personalised practice. Current pricing is shown on the in-app paywall.</div>
+      </details>
+      <details class="sfaq">
+        <summary>Is Studly a replacement for a teacher? <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="ans">No. Studly is a learning companion designed to support classroom instruction, independent study, and practice — not to replace a teacher.</div>
+      </details>
+      <details class="sfaq">
+        <summary>How do I sign in, and how is my data handled? <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="ans">No passwords — sign in with Apple, Google, or a one-time email code. Studly is for learners aged 13 and over. Photos of your work are deleted automatically after 90 days, and problems sent for solving carry no name or email. See the <a href="https://web-nikhil-ai-tools.vercel.app/privacy/" rel="noopener">privacy policy</a> for details.</div>
+      </details>
+      <details class="sfaq">
+        <summary>Will Studly support subjects beyond math? <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="ans">Mathematics is the initial focus. Additional study tools and subjects may be introduced in future updates.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a href="../index.html" class="brand">
+          <span class="brand__mark" aria-hidden="true">N</span>
+          <span class="brand__word">Nikhil <span class="ai">AI</span> Labs</span>
+        </a>
+        <p><strong>Studly</strong> — understand math, don't just solve it. An AI math learning companion from Nikhil AI Labs.</p>
+        <div class="foot-social">
+          <a href="https://www.linkedin.com/in/nikhilpal" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.76-1.95C20.4 8.75 22 10.9 22 14.5V21h-4v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.2 1.48-2.2 3v5.8H9V9Z"/></svg>
+          </a>
+          <a href="mailto:hello@nikhilailabs.com" aria-label="Email">
+            <svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm.5 2L12 13l8.5-6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Studly</h4>
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="foot-col">
+        <h4>Support</h4>
+        <a href="https://web-nikhil-ai-tools.vercel.app/support/" rel="noopener">Help &amp; Support</a>
+        <a href="mailto:hello@nikhilailabs.com">Contact</a>
+        <a href="https://web-nikhil-ai-tools.vercel.app/delete-account/" rel="noopener">Delete account</a>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <a href="https://web-nikhil-ai-tools.vercel.app/privacy/" rel="noopener">Privacy Policy</a>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="noopener">Terms of Use</a>
+        <a href="../index.html#products">Nikhil AI Labs</a>
+      </div>
+    </div>
+    <p class="foot-disclaimer"><strong>Studly is an independent learning platform</strong> and is not affiliated with any school, examination board, or educational institution unless explicitly stated. It supports learning and practice; it is not a substitute for a teacher.</p>
+    <div class="foot-bottom">
+      <span>© 2026 Nikhil AI Labs. All rights reserved.</span>
+      <span>Understand · practise · master</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>
