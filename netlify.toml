@@ -1,2 +1,17 @@
 [functions]
   directory = "netlify/functions"
+
+# Studly support is CANONICAL on the Vercel host (generated from the Studly
+# repo's docs/PRIVACY.md by web/build.mjs, and referenced by App Store Connect).
+# Never restate support/policy content here — redirect so the two can't drift.
+[[redirects]]
+  from = "/studly/support"
+  to = "https://web-nikhil-ai-tools.vercel.app/support/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/studly/support/*"
+  to = "https://web-nikhil-ai-tools.vercel.app/support/"
+  status = 301
+  force = true
