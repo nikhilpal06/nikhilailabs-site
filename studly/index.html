@@ -241,6 +241,19 @@
   .band-studly .cta-row{ justify-content:flex-start; }
   .spcard--plus .btn--studly{ background:#fff; color:var(--sa-deep); box-shadow:0 8px 22px rgba(0,0,0,.18); }
   .spcard--plus .btn--studly:hover{ background:#fff; box-shadow:0 14px 32px rgba(0,0,0,.26); }
+
+  /* Google Play is live, so that badge is a real link and reads as solid;
+     the App Store one stays dashed until Apple releases the build. */
+  .storebadge--live{ background:#fff; color:var(--sa-deep); border:2px solid #fff; }
+  .storebadge--live:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.22); }
+  .storebadge--live em{ opacity:.72; }
+  .storebadge{ transition:transform .15s var(--ease), box-shadow .15s var(--ease); }
+  .storeqr{ display:flex; flex-direction:column; align-items:center; gap:8px; margin:0 0 0 6px; }
+  .storeqr img{ display:block; width:104px; height:104px; border-radius:10px;
+                background:#fff; padding:6px; box-sizing:content-box; }
+  .storeqr figcaption{ font-size:11.5px; font-weight:700; letter-spacing:.05em;
+                       text-transform:uppercase; color:rgba(255,255,255,.72); }
+  @media (max-width:520px){ .storeqr{ display:none; } }
 </style>
 </head>
 <body>
@@ -578,7 +591,7 @@
       <div class="reveal">
         <span class="eyebrow s-eye"><span class="dot"></span>Get started</span>
         <h2>Your next math problem could be the one that finally makes sense.</h2>
-        <p>Studly is coming to the App Store and Google Play. These links go live at launch.</p>
+        <p>Studly is available now on Google Play. The App Store version is in review.</p>
 
         <!-- =====================================================================
              STORE BADGE PLACEHOLDERS
@@ -598,14 +611,30 @@
              so the layout will not jump when they are swapped in.
              ===================================================================== -->
         <div class="storerow">
+          <!-- Google Play is LIVE. Still a text badge, not the official artwork:
+               swap in the official asset from https://play.google.com/intl/en_us/badges/
+               keeping this href. -->
+          <a class="storebadge storebadge--live" href="https://play.google.com/store/apps/details?id=com.studly.app"
+             target="_blank" rel="noopener">
+            <em>Get it on</em><b>Google Play</b>
+          </a>
+          <!-- App Store build is in review. Apple's lookup API returns no result
+               for id6796146709 until it is released, so this stays a placeholder.
+               At release, swap for the official badge linking to
+               https://apps.apple.com/app/id6796146709 -->
           <span class="storebadge is-placeholder" role="img" aria-label="Coming soon to the App Store">
             <em>Coming soon on the</em><b>App Store</b>
           </span>
-          <span class="storebadge is-placeholder" role="img" aria-label="Coming soon on Google Play">
-            <em>Coming soon on</em><b>Google Play</b>
-          </span>
+
+          <!-- Scan-to-install, for people reading on a desktop. The SVG is
+               generated from the Play URL and verified by decoding it back. -->
+          <figure class="storeqr">
+            <img src="img/qr-google-play.svg" width="104" height="104"
+                 alt="QR code linking to Studly on Google Play" />
+            <figcaption>Scan to install</figcaption>
+          </figure>
         </div>
-        <p class="storenote">Want to know the moment it lands?</p>
+        <p class="storenote">Want to know when the iPhone version lands?</p>
 
         <div class="cta-row">
           <a href="mailto:hello@nikhilailabs.com?subject=Studly%20launch%20updates&amp;body=I%27d%20like%20to%20be%20notified%20when%20Studly%20launches." class="btn btn--lg btn--studly">Get launch updates
