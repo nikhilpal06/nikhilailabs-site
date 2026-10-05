@@ -26,6 +26,21 @@ const GUIDES = [
     pdf: "files/soas-quick-reference-29ef137b.pdf",
   },
   {
+    slug: "inside-out",
+    meta: "Free guide · 3 pages",
+    title: "AI pays off from the inside out",
+    card: "Five layers every AI pilot in a plant stands on, and how to tell which one yours skipped.",
+    lead: "Most AI pilots in manufacturing don't fail at the AI. They fail on a layer underneath it. This guide shows the build order and helps you score your own project.",
+    inside: [
+      "The 5 layers (Mindset, Process, Data, People, Scale), each with what scales, what stalls and the output to have",
+      "\"Where is your project really stuck?\": six things you hear in reviews, mapped to the missing layer",
+      "A gate check and a self-check for building from the outside in",
+      "A one-page scorecard to run on your own pilot, with a 30-day re-score",
+    ],
+    cover: "covers/ai-inside-out.png",
+    pdf: "files/ai-inside-out-guide-6952c1fe.pdf",
+  },
+  {
     slug: "yokoten",
     meta: "Free workbook · 4 pages",
     title: "Yokoten: solve it once, prevent it everywhere",
