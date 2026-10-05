@@ -11,6 +11,21 @@ const KIT_FORM = "https://app.kit.com/forms/10005146/subscriptions";
 
 const GUIDES = [
   {
+    slug: "soas",
+    meta: "Free quick reference · 3 pages",
+    title: "SOAS: optimize before you automate",
+    card: "Standardize, Optimize, Automate, Sustain: the order that stops you digitizing waste.",
+    lead: "Most factories don't have an AI problem. They have a sequence problem. This quick reference shows the four stages in order and gives you a test to run on any automation request before you approve it.",
+    inside: [
+      "The 4 SOAS stages, each with its key question, its output and the common trap",
+      "An exit gate for every stage: when it's done and what evidence to ask for",
+      "A worked example and a self-check for automating too early",
+      "The SOAS test: a worksheet to score one automation request and decide",
+    ],
+    cover: "covers/soas.png",
+    pdf: "files/soas-quick-reference-29ef137b.pdf",
+  },
+  {
     slug: "yokoten",
     meta: "Free workbook · 4 pages",
     title: "Yokoten: solve it once, prevent it everywhere",
