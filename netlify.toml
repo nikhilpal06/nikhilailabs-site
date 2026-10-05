@@ -15,3 +15,9 @@
   to = "https://web-nikhil-ai-tools.vercel.app/support/"
   status = 301
   force = true
+
+# Free guides: the PDFs are only linked after an email sign-up, so keep them out of search results.
+[[headers]]
+  for = "/guides/files/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

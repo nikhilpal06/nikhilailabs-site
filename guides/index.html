@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LNRHH1434T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LNRHH1434T');
+</script>
+<title>Free guides and workbooks — Nikhil AI Labs</title>
+<meta name="description" content="Free, practical workbooks for operations and quality leaders: Yokoten (spread a proven fix everywhere) and Hoshin Kanri (deploy strategy to every team). By Nikhil Pal." />
+<link rel="canonical" href="https://nikhilailabs.com/guides/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Nikhil AI Labs" />
+<meta property="og:title" content="Free guides and workbooks by Nikhil Pal" />
+<meta property="og:description" content="Practical workbooks for operations and quality leaders: Yokoten and Hoshin Kanri, with worksheets you can use this week." />
+<meta property="og:url" content="https://nikhilailabs.com/guides/" />
+<meta property="og:image" content="https://nikhilailabs.com/assets/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../assets/logo.svg" />
+<link rel="stylesheet" href="../assets/site.css" />
+<style>
+  .g-hero { padding: 48px 0 24px; }
+  .g-hero h1 { font-size: clamp(36px, 5.4vw, 62px); margin: 18px 0 14px; }
+  .g-hero p { font-size: 18px; max-width: 640px; margin: 0; }
+  .g-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px; padding: 24px 0 72px; }
+  .g-card { background: var(--white); border: var(--bw) solid var(--navy); border-radius: var(--radius); box-shadow: var(--sh); overflow: hidden; display: flex; flex-direction: column; transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
+  .g-card:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 var(--navy); }
+  .g-card__cover { background: var(--tint-navy); border-bottom: var(--bw) solid var(--navy); padding: 22px 22px 0; height: 250px; overflow: hidden; }
+  .g-card__cover img { border: 1.5px solid rgba(27,45,90,.25); border-radius: 6px 6px 0 0; box-shadow: 0 8px 24px rgba(27,45,90,.18); }
+  .g-card__body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .g-card__body h3 { font-size: 22px; }
+  .g-card__body p { margin: 0; font-size: 15.5px; }
+  .g-card__body .btn { margin-top: auto; align-self: flex-start; }
+  .g-meta { font-size: 13px; font-weight: 700; color: var(--teal-deep); text-transform: uppercase; letter-spacing: .06em; }
+
+  .g-one { display: grid; grid-template-columns: minmax(260px, 420px) 1fr; gap: 48px; align-items: start; padding: 40px 0 72px; }
+  .g-one__cover { background: var(--tint-navy); border: var(--bw) solid var(--navy); border-radius: var(--radius); box-shadow: var(--sh); padding: 26px; }
+  .g-one__cover img { border: 1.5px solid rgba(27,45,90,.25); border-radius: 6px; box-shadow: 0 10px 30px rgba(27,45,90,.2); }
+  .g-one__peek { position: relative; max-height: 380px; overflow: hidden; border-radius: 6px; }
+  .g-one__peek:after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 160px; background: linear-gradient(rgba(220,227,242,0), var(--tint-navy)); }
+  .g-one__cover p { margin: 14px 0 0; font-size: 14px; font-weight: 700; color: var(--navy); text-align: center; }
+  .g-one h1 { font-size: clamp(34px, 4.6vw, 54px); margin: 16px 0 14px; }
+  .g-one .lead { font-size: 18px; margin: 0 0 22px; max-width: 620px; }
+  .g-inside { background: var(--white); border: var(--bw) solid var(--navy); border-radius: var(--radius-sm); padding: 18px 22px; margin: 0 0 26px; max-width: 620px; }
+  .g-inside h4 { font-size: 14px; text-transform: uppercase; letter-spacing: .07em; color: var(--teal-deep); margin-bottom: 8px; }
+  .g-inside ul { margin: 0; padding-left: 20px; }
+  .g-inside li { margin: 4px 0; font-size: 16px; }
+
+  .g-form { max-width: 620px; }
+  .g-form label { display: block; font-weight: 800; color: var(--navy); font-size: 15px; margin-bottom: 8px; }
+  .g-form__row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .g-form input[type=email] { flex: 1 1 260px; min-height: 60px; padding: 0 18px; font: inherit; font-size: 17px; color: var(--navy); background: var(--white); border: var(--bw) solid var(--navy); border-radius: 16px; outline: none; }
+  .g-form input[type=email]:focus { box-shadow: 0 0 0 4px var(--tint-teal); }
+  .g-form .btn { border: var(--bw) solid var(--navy); cursor: pointer; font-family: inherit; }
+  .g-form .btn[disabled] { opacity: .6; cursor: wait; }
+  .g-note { font-size: 13.5px; margin: 12px 0 0; color: var(--body); }
+  .g-err { color: #B42318; font-weight: 700; font-size: 14.5px; margin: 10px 0 0; display: none; }
+  .g-done { display: none; background: var(--white); border: var(--bw) solid var(--navy); border-radius: var(--radius); box-shadow: var(--sh); padding: 24px 26px; max-width: 620px; }
+  .g-done h3 { font-size: 26px; margin-bottom: 8px; }
+  .g-done p { margin: 0 0 16px; }
+  .g-banner { background: var(--tint-teal); border: var(--bw) solid var(--navy); border-radius: var(--radius-sm); padding: 14px 18px; font-weight: 700; color: var(--navy); margin-top: 24px; display: none; }
+  .g-more { padding: 0 0 72px; }
+  .g-more h2 { font-size: 28px; margin-bottom: 4px; }
+  @media (max-width: 820px) { .g-one { grid-template-columns: 1fr; gap: 28px; padding-top: 24px; } .g-one__cover { max-width: 420px; order: 2; } .g-one__peek { max-height: 260px; } }
+</style>
+</head>
+<body>
+<!-- ============ NAV ============ -->
+<header class="nav-shell">
+  <div class="wrap">
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="../index.html" class="brand" aria-label="Nikhil AI Labs home">
+        <span class="brand__mark" aria-hidden="true">N</span>
+        <span class="brand__word">Nikhil <span class="ai">AI</span> Labs</span>
+      </a>
+      <div class="nav__links">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#products">Products</a>
+        <a href="../index.html#use-cases">Use Cases</a>
+        <a href="../index.html#insights">Insights</a>
+        <a href="./" class="is-active">Guides</a>
+      </div>
+      <div class="nav__right">
+        <a href="https://app.nikhilailabs.com" class="nav__login">Log in</a>
+        <a href="https://app.nikhilailabs.com/pricing" class="btn btn--primary btn--nav">Pricing</a>
+        <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- One guide (?g=slug): the email gate for that guide only -->
+  <section id="one" hidden>
+    <div class="wrap">
+      <div class="g-one">
+        <div class="g-one__cover"><div class="g-one__peek"><img id="oneCover" src="" alt="" width="745" height="1054" /></div><p id="onePages">A preview of page 1</p></div>
+        <div>
+          <span class="eyebrow"><span class="dot"></span><span id="oneMeta">Free workbook</span></span>
+          <h1 id="oneTitle"></h1>
+          <p class="lead" id="oneLead"></p>
+          <div class="g-inside"><h4>What's inside</h4><ul id="oneInside"></ul></div>
+
+          <form class="g-form" id="gForm" novalidate>
+            <label for="gEmail">Where should I send it?</label>
+            <div class="g-form__row">
+              <input type="email" id="gEmail" name="email_address" autocomplete="email" placeholder="you@company.com" required />
+              <button class="btn btn--primary btn--lg" type="submit" id="gBtn">Get the free guide</button>
+            </div>
+            <p class="g-err" id="gErr" role="alert"></p>
+            <p class="g-note">Free. You'll also get occasional practical guides from Nikhil Pal by email. Unsubscribe any time.</p>
+          </form>
+
+          <div class="g-done" id="gDone" aria-live="polite">
+            <h3>Your guide is ready</h3>
+            <p>Thanks! Download it below. I've also sent you a short email: confirm it to get the next guide when it comes out.</p>
+            <a class="btn btn--primary btn--lg" id="gDownload" href="#" download>Download the PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- All guides (no ?g=) -->
+  <section id="all" hidden>
+    <div class="wrap">
+      <div class="g-hero">
+        <span class="eyebrow"><span class="dot"></span>Free guides</span>
+        <h1>Practical workbooks for <span class="accent">operations leaders</span></h1>
+        <p>Short, field-tested guides with worksheets you can use this week. Pick one, tell me where to send it, and it's yours.</p>
+        <div class="g-banner" id="gConfirmed">Thanks for confirming your email. You'll get the next guide when it's out.</div>
+      </div>
+      <div class="g-grid" id="allGrid"></div>
+    </div>
+  </section>
+
+  <section class="g-more" id="more" hidden>
+    <div class="wrap">
+      <h2>More free guides</h2>
+      <div class="g-grid" id="moreGrid"></div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a href="../index.html" class="brand">
+          <span class="brand__mark" aria-hidden="true">N</span>
+          <span class="brand__word">Nikhil <span class="ai">AI</span> Labs</span>
+        </a>
+        <p>Nikhil AI Labs builds AI copilots that strengthen operational excellence, investigation quality, and continuous improvement.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Guides</h4>
+        <a href="./?g=yokoten">Yokoten workbook</a>
+        <a href="./?g=hoshin-kanri">Hoshin Kanri quick reference</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="../index.html#use-cases">Use Cases</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#insights">Insights</a>
+      </div>
+      <div class="foot-col">
+        <h4>Connect</h4>
+        <a href="https://www.linkedin.com/in/nikhilpal" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://app.nikhilailabs.com/pricing">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Nikhil AI Labs. Guides © Nikhil Pal.</span>
+      <span>Built around GMP · CAPA · RCA · Deviations</span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/site.js"></script>
+<script src="guides.js"></script>
+</body>
+</html>
