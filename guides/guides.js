@@ -11,6 +11,21 @@ const KIT_FORM = "https://app.kit.com/forms/10005146/subscriptions";
 
 const GUIDES = [
   {
+    slug: "automate",
+    meta: "Free checklist · 2 pages",
+    title: "Don't buy an expensive old process",
+    card: "New technology + old process = expensive old process. Run this check before you sign the purchase order.",
+    lead: "Technology doesn't fix a process. It copies it, then runs the copy faster. This check makes sure you fix the process first, then automate what is left.",
+    inside: [
+      "The 4 steps before you automate, each with its output and the common trap",
+      "Six warning signs that you are about to automate an old process",
+      "A one-page pre-automation worksheet to fill in with the people who run the process",
+      "A four-question \"ready to automate?\" gate",
+    ],
+    cover: "covers/pre-automation-check.png",
+    pdf: "files/pre-automation-check-419c8501.pdf",
+  },
+  {
     slug: "soas",
     meta: "Free quick reference · 3 pages",
     title: "SOAS: optimize before you automate",
@@ -69,6 +84,21 @@ const GUIDES = [
     ],
     cover: "covers/hoshin-kanri.png",
     pdf: "files/hoshin-kanri-quick-reference-9846b263.pdf",
+  },
+  {
+    slug: "ai-readiness",
+    meta: "Free quick reference · 3 pages",
+    title: "AI went live. The training didn't.",
+    card: "Five ways to measure AI readiness that go beyond training completion.",
+    lead: "Nearly 3 in 4 organisations have deployed or are piloting AI, yet only 18% say most of their workforce got AI upskilling. This quick reference helps you measure capability, not access.",
+    inside: [
+      "The gap in numbers, from the Coursera + Udemy Global Skills Report 2026",
+      "5 readiness measures beyond training completion, each with its output and the common trap",
+      "What usually gets reported vs what to ask for instead, plus six warning signs",
+      "A one-page AI readiness scorecard to run on one use case with your team",
+    ],
+    cover: "covers/ai-readiness.png",
+    pdf: "files/ai-readiness-check-d67efba6.pdf",
   },
 ];
 
