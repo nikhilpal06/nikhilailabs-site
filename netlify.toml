@@ -21,3 +21,17 @@
   for = "/guides/files/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+
+# Free guides moved to one Kit landing page + Notion library (Oct 2026). Old guide links,
+# including /guides/?g=<slug>, go there. The old PDFs under /guides/files/ keep working.
+[[redirects]]
+  from = "/guides"
+  to = "https://nikhilailabs.kit.com/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guides/index.html"
+  to = "https://nikhilailabs.kit.com/guides"
+  status = 301
+  force = true
