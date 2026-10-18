@@ -20,6 +20,20 @@
 <meta name="description" content="AI-powered investigation intelligence for deviations, CAPAs, nonconformances, complaints, and audit findings. Turn investigations into decisions." />
 <link rel="icon" href="../assets/logo.svg" />
 <link rel="stylesheet" href="../assets/site.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Investigation Intelligence Workbench demo",
+  "description": "From a deviation case file to a scored, audit-ready investigation: one cross-document timeline, facts vs assumptions vs gaps, evidence-based 5 Whys and fishbone, readiness and quality scores, CAPA and effectiveness checks.",
+  "thumbnailUrl": "https://i.ytimg.com/vi/W4kqlg_Cft4/maxresdefault.jpg",
+  "uploadDate": "2026-09-25",
+  "duration": "PT1M11S",
+  "contentUrl": "https://www.youtube.com/watch?v=W4kqlg_Cft4",
+  "embedUrl": "https://www.youtube-nocookie.com/embed/W4kqlg_Cft4",
+  "publisher": { "@type": "Organization", "name": "Nikhil AI Labs", "url": "https://nikhilailabs.com" }
+}
+</script>
 </head>
 <body>
 
@@ -64,7 +78,7 @@
         <a href="https://app.nikhilailabs.com/pricing" class="btn btn--primary btn--lg">See pricing
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a href="https://app.nikhilailabs.com/pricing" class="btn btn--ghost btn--lg">Book Demo</a>
+        <a href="#demo" class="btn btn--ghost btn--lg">Watch the 71-second demo</a>
       </div>
       <div class="hero-chips">
         <span>Deviations</span>
@@ -76,6 +90,40 @@
     </div>
   </div>
 </section>
+
+<!-- ============ DEMO ============ -->
+<section id="demo" class="demo-sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>See it in action</span>
+      <h2>From a case file to a scored investigation in 71 seconds.</h2>
+      <p>Drop in the whole case file. The Workbench builds one timeline across every document, separates facts from assumptions and gaps, drafts the 5 Whys and fishbone from the evidence, and tells you whether the investigation is ready to close.</p>
+    </div>
+    <div class="demo-video reveal" data-yt="W4kqlg_Cft4">
+      <button type="button" class="demo-play" aria-label="Play the Investigation Intelligence demo video">
+        <img src="https://i.ytimg.com/vi/W4kqlg_Cft4/maxresdefault.jpg" alt="Investigation Intelligence Workbench demo" loading="lazy" width="1280" height="720" />
+        <span class="demo-play-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      </button>
+    </div>
+    <p class="demo-note reveal">Synthetic case, seven documents. The copilot is advisory: a qualified person owns the root cause and the signature.</p>
+  </div>
+</section>
+<script>
+  (function () {
+    var box = document.querySelector('.demo-video[data-yt]');
+    if (!box) return;
+    box.querySelector('.demo-play').addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + box.getAttribute('data-yt') + '?autoplay=1&rel=0&modestbranding=1';
+      f.title = 'Investigation Intelligence Workbench demo';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      box.innerHTML = '';
+      box.appendChild(f);
+    });
+  })();
+</script>
 
 <!-- ============ PROBLEM ============ -->
 <section>

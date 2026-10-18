@@ -1,36 +1,29 @@
 /* ============================================================
    NIKHIL AI LABS — Shared design system (neo-brutalist)
-   Brand kit: Navy #1B2D5A · Teal #17A2B8 · Orange #FF6B35
-   Type: Montserrat  ·  Base: warm cream + white
+   Brand kit (Nikhil-AI-Labs, Oct 2026): Navy #1B2D5A text · Lab Blue #22A2D6
+   structure · Lab Orange #FF6B35 accent · Mist #F4F6FB panels · White canvas
+   Type: Archivo Black (headlines, weight 400 only) + Poppins (everything read)
    Linked by: index.html, products/*.html
    ============================================================ */
 
-/* Self-hosted Montserrat (variable, all weights in one file) so the brand font
-   renders on every device even when Google Fonts is slow or blocked. */
-@font-face {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url("fonts/montserrat.woff2") format("woff2");
-}
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 
 :root {
   --navy: #1B2D5A;
-  --navy-deep: #0E1A38;
-  --teal: #17A2B8;
-  --teal-deep: #0F7C8C;
-  --orange: #FF6B35;
+  --navy-deep: #0E1B3D;          /* Deep Navy: dark logo tile, footer banner */
+  --teal: #22A2D6;               /* Lab Blue: structure, fills, outlines; never text */
+  --teal-deep: #1B2D5A;          /* text that used to be teal is Navy now (Lab Blue fails contrast) */
+  --orange: #FF6B35;             /* Lab Orange: the one accent */
   --orange-deep: #E85420;
   --ink: #1B2D5A;
-  --body: #333333;
-  --paper: #FBF6EC;
-  --paper-2: #F4ECDC;
+  --body: #1B2D5A;               /* all text is Navy */
+  --paper: #FFFFFF;              /* White canvas */
+  --paper-2: #F4F6FB;            /* Mist: cards and quiet panels */
   --white: #FFFFFF;
 
-  /* pastel icon-tile tints */
+  /* tints of the kit colours for icon tiles */
   --tint-orange: #FFE3D6;
-  --tint-teal: #D5EEF2;
+  --tint-teal: #D3ECF9;
   --tint-navy: #DCE3F2;
 
   --bw: 2.5px;                 /* border width */
@@ -48,12 +41,8 @@ html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   margin: 0;
-  font-family: "Montserrat", "Inter", system-ui, -apple-system, sans-serif;
+  font-family: "Poppins", system-ui, -apple-system, sans-serif;
   background-color: var(--paper);
-  background-image:
-    radial-gradient(var(--navy) 0.6px, transparent 0.6px);
-  background-size: 26px 26px;
-  background-position: -13px -13px;
   color: var(--body);
   font-size: 17px;
   line-height: 1.6;
@@ -67,7 +56,8 @@ a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 
 h1, h2, h3, h4 {
-  font-weight: 900;
+  font-family: "Archivo Black", "Poppins", system-ui, sans-serif;
+  font-weight: 400; /* Archivo Black has one weight; heavier values get faked by the browser */
   color: var(--ink);
   line-height: 1.04;
   letter-spacing: -0.02em;
@@ -115,7 +105,7 @@ h1, h2, h3, h4 {
 .btn--primary { background: var(--orange); color: var(--navy); }
 .btn--primary:hover { background: var(--orange-deep); }
 .btn--ghost { background: var(--tint-teal); }
-.btn--ghost:hover { background: #c4e7ed; }
+.btn--ghost:hover { background: #BCE2F5; }
 .btn--navy { background: var(--navy); color: #fff; }
 .btn--navy:hover { background: var(--navy-deep); }
 .btn--nav { padding: 11px 20px; min-height: 44px; border-radius: 12px; font-size: 14.5px; }
@@ -129,9 +119,9 @@ h1, h2, h3, h4 {
 .brand__mark {
   width: 42px; height: 42px; flex: none;
   display: grid; place-items: center;
-  background-color: var(--orange);
+  background-color: var(--white);
   background-image: url("logo-mark.svg");
-  background-size: 76%; background-position: center; background-repeat: no-repeat;
+  background-size: 100%; background-position: center; background-repeat: no-repeat;
   color: transparent; font-size: 0;
   border: var(--bw) solid var(--navy); border-radius: 12px;
   box-shadow: 3px 3px 0 var(--navy);
@@ -200,7 +190,7 @@ section { padding: 84px 0; }
   background: var(--white); border: var(--bw) solid var(--navy); border-radius: 14px;
   box-shadow: var(--sh-sm); padding: 14px 18px; min-width: 120px;
 }
-.stat b { display: block; font-size: 30px; font-weight: 900; color: var(--navy); line-height: 1; }
+.stat b { display: block; font-size: 30px; font-family: "Archivo Black", sans-serif; font-weight: 400; color: var(--navy); line-height: 1; }
 .stat span { font-size: 12.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--teal-deep); }
 
 /* ---- Hero product preview card ---- */
@@ -353,7 +343,7 @@ section { padding: 84px 0; }
   transition: transform .14s var(--ease), box-shadow .14s var(--ease);
 }
 .proof-card:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--navy-deep); }
-.proof-card .big { font-size: 46px; font-weight: 900; color: var(--orange); line-height: 1; letter-spacing: -.03em; }
+.proof-card .big { font-size: 46px; font-family: "Archivo Black", sans-serif; font-weight: 400; color: var(--navy); line-height: 1; letter-spacing: -.02em; }
 .proof-card .ico { margin-bottom: 14px; }
 .proof-card h3 { font-size: 17px; margin: 12px 0 8px; }
 .proof-card p { margin: 0; font-size: 14.5px; color: var(--body); line-height: 1.5; }
@@ -816,3 +806,141 @@ footer .brand__word { color: var(--white); }
   .fw-iv-nav #fwBack { margin-right: 0; }
   .fw-iv-nav .btn { flex: 1 1 auto; }
 }
+
+/* ── Product demo video (click-to-play YouTube facade) ── */
+.demo-sec { scroll-margin-top: 90px; }
+.demo-video { position: relative; width: 100%; max-width: 960px; margin: 28px auto 0; aspect-ratio: 16 / 9; background: var(--navy); border: 2px solid var(--navy); box-shadow: var(--sh); overflow: hidden; }
+.demo-video iframe, .demo-video img { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.demo-video img { object-fit: cover; }
+.demo-play { all: unset; position: absolute; inset: 0; cursor: pointer; display: block; }
+.demo-play:focus-visible { outline: 3px solid var(--orange); outline-offset: -3px; }
+.demo-play-btn { position: absolute; left: 50%; top: 50%; width: 84px; height: 84px; transform: translate(-50%, -50%); border-radius: 50%; background: var(--orange); color: #fff; display: grid; place-items: center; box-shadow: 0 10px 30px rgba(0,0,0,.35); transition: transform .15s ease; }
+.demo-play-btn svg { width: 38px; height: 38px; fill: currentColor; margin-left: 4px; }
+.demo-play:hover .demo-play-btn { transform: translate(-50%, -50%) scale(1.06); }
+.demo-note { max-width: 960px; margin: 14px auto 0; font-size: 14px; color: var(--muted, #5b6472); text-align: center; }
+@media (max-width: 640px) { .demo-play-btn { width: 64px; height: 64px; } .demo-play-btn svg { width: 28px; height: 28px; } }
+
+/* ---------- Kit rules (Nikhil-AI-Labs, Oct 2026) ----------
+   Orange and Lab Blue are never text colours. Emphasis is Navy text on an
+   Orange highlighter bar across the lower-middle of the letters (46-84%). */
+.accent, .brand__word .ai, .hero h1 .hl, .phero h1 .hl, .philo h2 .hl, .statement .lines .hl, .prose__closer .hl,
+.tile.feature .tag, .pc--orange .pc__tag, .post .read, .problem-result b, .exp .big, .ind-go, .tile .tile-link,
+.cert--award .cert__issuer, .fw-badge, .fw-step-coach, .crumb a:hover, .article__back a:hover { color: var(--navy); }
+.foot-col a:hover { color: var(--white); }
+.fw-error { color: #E5484D; } /* status red: a real error signal, not an accent */
+.accent, .hero h1 .hl, .phero h1 .hl, .philo h2 .hl, .statement .lines .hl, .prose__closer .hl {
+  background-image: linear-gradient(transparent 0 46%, var(--orange) 46% 84%, transparent 84%);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.exp .big { font-family: "Archivo Black", sans-serif; font-weight: 400; letter-spacing: -.02em; }
+/* Archivo Black runs wide: headline sizes come down a step so lines still break where they did */
+.hero h1 { font-size: clamp(40px, 6vw, 76px); }
+.phero h1 { font-size: clamp(36px, 5.8vw, 70px); }
+.philo h2 { font-size: clamp(32px, 5.2vw, 62px); }
+
+/* ============================================================
+   Lab kit v3 (Oct 2026): the Nikhil-AI-Labs brand sheet
+   (C:\Projects\Infographics\lab-brand\brand-sheet.html, MOTION.md §9).
+   White canvas, Navy words, Lab Blue structure, one Orange focus.
+   Cards: Mist, no border, no shadow, 12px corners. Kickers: Poppins
+   600 caps, Navy 72%, 3px Lab Blue rule. Highlight: Orange bar 46-84%.
+   ============================================================ */
+:root {
+  --bw: 0px;                 /* the old 2.5px Navy card borders are retired */
+  --radius: 12px;
+  --radius-sm: 10px;
+  --sh: none;
+  --sh-sm: none;
+  --maxw: 1152px;
+  --mist: #F4F6FB;
+  --rule: #DDE2EC;           /* the sheet's hairline for white-on-white edges */
+}
+body { font-size: 17px; }
+h1, h2, h3, h4 { letter-spacing: -.01em; }
+.hero h1, .phero h1, .philo h2 { line-height: 1.1; }
+
+/* kicker: spaced caps on a Lab Blue rule, like the sheet's section heads */
+.eyebrow { background: transparent; border: 0; border-radius: 0; box-shadow: none; padding: 0 0 10px; color: var(--navy); opacity: .72; font-size: 13px; font-weight: 600; letter-spacing: .14em; border-bottom: 3px solid var(--teal); }
+.eyebrow .dot { display: none; }
+.band-navy .eyebrow { background: transparent; color: var(--white); opacity: .85; border-bottom-color: var(--teal); }
+.band-orange .eyebrow { background: transparent; border-bottom-color: var(--navy); opacity: .85; }
+
+/* highlight: the Orange bar across the lower-middle of the letters */
+.accent, .hero h1 .hl, .phero h1 .hl, .philo h2 .hl, .statement .lines .hl, .prose__closer .hl, .sec-head h2 .hl {
+  background-color: transparent; padding: 0 .12em; margin: 0 -.12em;
+  background-image: linear-gradient(transparent 0 46%, var(--orange) 46% 84%, transparent 84%);
+}
+.sec-head p, .hero__sub, .phero .lead { color: var(--navy); opacity: .72; font-size: 19px; line-height: 1.55; }
+
+/* nav: flat white bar on a Lab Blue rule */
+header.nav-shell { padding: 0; background: var(--white); border-bottom: 3px solid var(--teal); }
+.nav { border: 0; box-shadow: none; background: transparent; border-radius: 0; padding: 16px 0; }
+.nav__links a { border: 0; font-weight: 600; }
+.nav__links a:hover, .nav__links a.is-active { background: transparent; text-decoration: underline; text-decoration-color: var(--teal); text-decoration-thickness: 3px; text-underline-offset: 7px; }
+.nav__login { border: 2px solid var(--teal); box-shadow: none; }
+.brand__mark { border: 0; box-shadow: none; }
+
+/* buttons: Orange fill with Navy words is the one accent; secondary is a Lab Blue outline */
+.btn { border: 0; box-shadow: none; border-radius: var(--radius); font-weight: 700; }
+.btn:hover { transform: translateY(-1px); box-shadow: none; filter: brightness(.97); }
+.btn:active { transform: none; box-shadow: none; }
+.btn--ghost, .nav__login { background: var(--white); border: 2px solid var(--teal); color: var(--navy); }
+.btn--ghost:hover { background: var(--mist); }
+.btn--navy { background: var(--navy); color: var(--white); }
+.btn--onnavy, .btn--onnavy:hover, .btn--onnavy:active { box-shadow: none; }
+
+/* cards: Mist, no border, no shadow; on a Mist band they turn White */
+.tile, .product-card, .proof-card, .uc-card, .ind-card, .post, .stat, .faq-item, .preview, .exp, .g-card, .cert, .problem-item {
+  background: var(--mist); border: 0; box-shadow: none; border-radius: var(--radius);
+}
+main > section:nth-of-type(even) { background: var(--mist); }
+main > section:nth-of-type(even) :is(.tile, .product-card, .proof-card, .uc-card, .ind-card, .post, .stat, .faq-item, .preview, .exp, .problem-item) { background: var(--white); }
+.product-card::before, .ind-card::before { display: none; }
+.band-navy .proof-card, .band-navy .tile { background: rgba(255,255,255,.06); color: var(--white); }
+.band-navy .proof-card p, .band-navy .proof-card h3, .band-navy .proof-card .big { color: var(--white); }
+
+/* structure in Lab Blue: number rings, bullets, bars, dividers */
+.pc__num, .flowstep .num, .an .n { background: var(--white) !important; color: var(--navy); border: 4px solid var(--teal); border-radius: 50%; font-family: "Archivo Black", sans-serif; font-weight: 400; }
+.cap-list svg, .pc--teal .cap-list svg, .pc--orange .cap-list svg, .pc--navy .cap-list svg, .hero__assure svg, .aud svg { stroke: var(--teal); }
+.ico { border: 0; background: var(--white); border-radius: var(--radius-sm); }
+main > section:nth-of-type(even) .ico { background: var(--mist); }
+.ico.t-teal, .ico.t-orange, .ico.t-navy { background: var(--white); }
+.ico svg { stroke: var(--teal); }
+.bar { border: 0; background: var(--rule); }
+.bar .fill-teal { background: var(--teal); }
+.chip, .tag-pills span, .hero-chips span { border: 2px solid var(--rule); box-shadow: none; background: var(--white); border-radius: 999px; }
+.chip.warn { border-color: var(--orange); background: var(--white); }
+.pv-top, .preview__top { border-bottom: 2px solid var(--rule); }
+.flowstep .num { width: 38px; height: 38px; }
+.tile .tag, .pc__tag, .post__tag, .pv-live, .pc__sub, .crumb { color: var(--navy); opacity: .72; font-weight: 600; letter-spacing: .12em; }
+.post .read, .ind-go, .tile .tile-link { color: var(--navy); text-decoration: underline; text-decoration-color: var(--teal); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+/* bands and separators: no thick rules; Mist bands do the work */
+main > section + section, main > section + div, footer { border-top: 0; }
+.band-navy { border: 0; }
+.band-orange { background: var(--orange); background-image: none; border: 0; }
+footer { background: var(--deep, #0E1B3D); }
+
+/* forms + faq */
+.faq-item { box-shadow: none; }
+.faq-item[open] { box-shadow: none; background: var(--white); border: 2px solid var(--rule); }
+.faq-icon { border: 2px solid var(--teal); background: var(--white); border-radius: 50%; }
+.faq-item[open] .faq-icon { background: var(--teal); }
+.fw-control, .g-form input, input[type=email], textarea, select { border: 2px solid var(--rule) !important; border-radius: var(--radius-sm) !important; box-shadow: none; background: var(--white); }
+.fw-control:focus, .g-form input:focus, textarea:focus, select:focus { border-color: var(--teal) !important; outline: none; box-shadow: none !important; }
+.fw-chips button { border: 2px solid var(--rule); border-radius: 999px; background: var(--white); }
+.problem-item .x { background: var(--white); border: 2px solid var(--orange); border-radius: 8px; }
+#watch .video-embed, .demo-video { border: 0; box-shadow: none; border-radius: var(--radius); }
+
+/* Type (Nikhil's call, 2026-10-17): the slopdetector.org pairing. Space Grotesk for
+   everything read and every headline; JetBrains Mono for kickers, tags and small labels. */
+body, .btn, input, select, textarea, button { font-family: "Space Grotesk", system-ui, -apple-system, sans-serif; }
+h1, h2, h3, h4, .stat b, .proof-card .big, .exp .big, .pc__num, .flowstep .num, .brand__word { font-family: "Space Grotesk", system-ui, sans-serif; font-weight: 700; }
+h1 { font-weight: 700; letter-spacing: -.025em; }
+.eyebrow, .tile .tag, .pc__tag, .pc__sub, .post__tag, .pv-live, .pv-top, .crumb, .stat span, .chip, .tag-pills span, .hero-chips span,
+.marquee__track span, .foot-col h4, .fw-badge, .cap-list .lbl, .problem-result, .tile .tile-link, .ind-go, .post .read {
+  font-family: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace; font-weight: 500; letter-spacing: .06em;
+}
+.eyebrow { font-size: 12.5px; letter-spacing: .1em; }
+.chip, .tag-pills span, .hero-chips span { font-size: 12px; letter-spacing: .02em; font-weight: 500; }
+.phero .crumb { display: flex; justify-content: center; margin-bottom: 18px; }
